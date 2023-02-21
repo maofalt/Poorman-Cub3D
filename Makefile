@@ -6,7 +6,7 @@
 #    By: motero <motero@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 18:38:23 by motero            #+#    #+#              #
-#    Updated: 2023/02/21 10:45:37 by motero           ###   ########.fr        #
+#    Updated: 2023/02/21 11:42:35 by motero           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = cub3D
 #                                 HEADERS                                     #
 #=============================================================================#
 
-HDR_NAME = cub3D.h 
+HDR_NAME = cub3D.h parsing.h structures.h mlx.h
 HDR_DIR = includes/
 HDRS = $(addprefix $(HDR_DIR), $(HDR_NAME))
 HDR_INC = -I includes -I libft/includes -I minilibx-linux/
