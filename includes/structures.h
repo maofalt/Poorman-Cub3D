@@ -39,6 +39,7 @@ typedef struct s_cub
 	size_t		mapwidth;
 	size_t		mapheight;
 	int			**map;
+	t_vector_f	player_pos;
 	t_img		texture[4];
 }				t_cub;
 
