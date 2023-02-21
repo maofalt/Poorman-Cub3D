@@ -6,13 +6,13 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:11:18 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 13:12:41 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/21 13:20:27 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int argc, int **argv)
+int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;

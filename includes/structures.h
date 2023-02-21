@@ -3,7 +3,7 @@
 
 # include <stdint.h>
 # include "libft.h"
-# include "get_next_line.h"
+# include "../gnl/get_next_line.h"
 # include "mlx_int.h"
 
 /*############################################################################*/
@@ -32,7 +32,7 @@ typedef int				t_vector_i __attribute__((vector_size (8)));
 ** a uint_32_t for the color of the ceiling
 */
 
-typdef struct s_cub
+typedef struct s_cub
 {
 	uint32_t	floor;
 	uint32_t	celling;

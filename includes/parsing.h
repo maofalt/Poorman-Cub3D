@@ -3,7 +3,7 @@
 
 # include <stdint.h>
 # include "libft.h"
-# include "get_next_line.h"
+# include "../gnl/get_next_line.h"
 # include "mlx_int.h"
 # include "structures.h"
 
