@@ -2,6 +2,7 @@
 # define STRUCTURES_H
 
 # include <stdint.h>
+# include <stdio.h>
 # include "libft.h"
 # include "../gnl/get_next_line.h"
 # include "mlx_int.h"

@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:33 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 17:19:04 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:20:34 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	valid_file(char	*path)
 	int	fd;
 
 	if (!path || path[0] == '\0')
-		return (ft_putstr_fd("Error: No file specified", 2), 0);
-	if (!check_extension(path))
+		return (ft_putstr_fd("Error: No file specified\n", 2), 0);
+	if (!check_extension(path, ".cub"))
 		return (ft_putstr_fd("Error: Invalid file extension", 2), 0);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
@@ -34,10 +34,10 @@ int	valid_file(char	*path)
 	return (close(fd), 1);
 }
 
-int	check_extension(char *file)
+int	check_extension(char *file, char *extension)
 {
-	return (!(ft_strncmp(file + (ft_strlen(file) - 4),
-				".cub", ft_strlen(file))));
+	return (!(ft_strncmp(file + (ft_strlen(file) - 4), \
+			extension, ft_strlen(file))));
 }
 
 int	file_empty(int fd)

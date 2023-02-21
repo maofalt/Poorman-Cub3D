@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 17:18:46 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:34:24 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSING_H
 
 # include <stdint.h>
+# include <stdio.h>
 # include "libft.h"
 # include "../gnl/get_next_line.h"
 # include "mlx_int.h"
@@ -29,7 +30,7 @@ int		main_parsing(t_cub	*data, char *path);
 /*                              CHECK VALID FILE                              */
 /*############################################################################*/
 int		valid_file(char	*path);
-int		check_extension(char *file);
+int		check_extension(char *file, char *extension);
 int		file_empty(int fd);
 
 /*############################################################################*/
@@ -46,6 +47,15 @@ char	*ft_clean_whitespaces(char *line);
 
 int		check_texture_elements(char *tmp, char **textures);
 int		add_last_texture(char *texture, char *tmp);
+
+/*############################################################################*/
+/*                              CHECK TEXTURE ELEMENTS                        */
+/*############################################################################*/
+
+int		valide_textures(char **textures);
+int		trim_textures_str(char **textures);
+int		check_textures_extension(char **textures);
+int		check_textures_validity(char **textures);
 
 /*############################################################################*/
 /*                              CHECK COLOR ELEMENTS                          */
