@@ -26,4 +26,21 @@ typdef struct s_cub
 	size_t		mapheight;
 	int			**map;
 	t_image		sprite[4];
+	
 }				t_cub;
+
+
+/* Vector structure for 2D float vector
+** Vector structure for 2D unsigned int vector
+** Vector structure for 2D int vectors
+** causes the compiler to set the mode for foo, 
+** to be 16 bytes, divided into int sized units.
+** SIMD vectorrization 
+** https://users.ece.cmu.edu/~franzf/teaching/slides-18-645-simd.pdf
+** http://gcc.gnu.org/onlinedocs/gcc-4.6.1/gcc/Vector-Extensions.html#Vector-Extensions
+
+*/
+
+typedef float			t_vector_f __attribute__((vector_size (8)));
+typedef unsigned int	t_vector_u __attribute__((vector_size (8)));
+typedef int				t_vector_i __attribute__((vector_size (8)));
