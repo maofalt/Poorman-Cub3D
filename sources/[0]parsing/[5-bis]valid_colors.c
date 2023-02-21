@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:28:36 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 18:51:58 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/21 23:33:27 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,54 @@ int	valid_characters(char **colors)
 	int	nbr_comma;
 
 	i = 0;
+	nbr_comma = 0;
 	while (i < 3)
 	{
 		j = 0;
 		while (colors[i][j])
 		{
-			if (!ft_isdigit(colors[i][j]) || colors[i][j] != ',')
+			if (colors[i][j] == ',')
+				nbr_comma++;
+			else if (!ft_isdigit(colors[i][j]))
 				return (0);
 			j++;
 		}
 		i++;
 	}
+	if (nbr_comma != 2)
+		return (0);
 	return (1);
 }
 
+/* check if there are 3 positive number 
+** which range is beetween 0 and 255 included
+*/
+int	range_colors(char **colors)
+{
+	int	i;
+	int	j;
+	int	nbr;
+
+	i = 0;
+	while (i < 3)
+	{
+		j = 0;
+		nbr = 0;
+		while (colors[i][j])
+		{
+			if (colors[i][j] == ',')
+			{
+				if (nbr < 0 || nbr > 255)
+					return (0);
+				nbr = 0;
+			}
+			else
+				nbr = nbr * 10 + (colors[i][j] - '0');
+			j++;
+		}
+		if (nbr < 0 || nbr > 255)
+			return (0);
+		i++;
+	}
+	return (1);
+}
