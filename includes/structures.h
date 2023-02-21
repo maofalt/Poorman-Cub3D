@@ -44,3 +44,5 @@ typdef struct s_cub
 typedef float			t_vector_f __attribute__((vector_size (8)));
 typedef unsigned int	t_vector_u __attribute__((vector_size (8)));
 typedef int				t_vector_i __attribute__((vector_size (8)));
+
+#endif
