@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:33 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 15:34:57 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/21 17:19:04 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	valid_file(char	*path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error: Open() returned -1", 2), 0);
-	if (file_emtpy(fd))
+	if (file_empty(fd))
 		return (close(fd), ft_putstr_fd("Error: File is empty", 2), 0);
 	return (close(fd), 1);
 }

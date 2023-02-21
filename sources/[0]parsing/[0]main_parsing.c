@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:30:35 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 15:33:38 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/21 17:18:06 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	main_parsing(t_cub	*data, char *path)
 {
-	t_cub	map;
-
 	if (!valid_file(path))
 		return (1);
-	if (!parsing_text(data, &map, path))
+	if (!parsing_text(data, path))
 		return (1);
-	if (!check_map(&map))
+	if (!check_map(data))
 		return (1);
 	return (0);
 }
