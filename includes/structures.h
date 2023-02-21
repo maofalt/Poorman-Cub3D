@@ -5,6 +5,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "mlx_int.h"
+#include "parsing.h"
 
 /*############################################################################*/
 /*                              STRUCTURES                                    */
@@ -18,7 +19,7 @@
 ** a uint_32_t for the color of the ceiling
 */
 
-typdef struct s_cub
+typedef struct s_cub
 {
 	uint32_t	floor;
 	uint32_t	celling;
@@ -26,4 +27,7 @@ typdef struct s_cub
 	size_t		mapheight;
 	int			**map;
 	t_image		sprite[4];
-}				t_cub;
+}	t_cub;
+
+
+#endif
