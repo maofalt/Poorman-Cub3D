@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:28:44 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 18:34:23 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:43:39 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,11 @@
 int	valide_textures(char **textures)
 {
 	if (!textures[0] || !textures[1] || !textures[2] || !textures[3])
-		return (0);
-	if (!trim_textures_str(textures))
-		return (0);
+		return (printf("11"),0);
 	if (check_textures_extension(textures))
-		return (0);
+		return (printf("22"),0);
 	if (check_textures_validity(textures))
-		return (0);
-	return (1);
-}
-
-int	trim_textures_str(char **textures)
-{
-	int		i;
-	char	*tmp;
-
-	i = 0;
-	while (i < 4)
-	{
-		tmp = ft_strtrim(textures[i], " ");
-		if (!tmp)
-			return (free(tmp), 0);
-		free(textures[i]);
-		textures[i] = tmp;
-		i++;
-	}
+		return (printf("33"),0);
 	return (1);
 }
 

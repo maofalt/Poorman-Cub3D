@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:16:07 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 17:16:08 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/22 22:29:47 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # include <stdint.h>
 # include "libft.h"
 # include "../gnl/get_next_line.h"
-# include "mlx_int.h"
 # include "structures.h"
 # include "parsing.h"
+# include "mlx_engine.h"
+# include "mlx_int.h"
+# include "colors.h"
 
 #endif

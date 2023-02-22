@@ -8,8 +8,10 @@
 ** Last update Wed May 25 16:44:16 2011 Olivier Crouzet
 */
 
+
+
 /*
-** Internal settings for MiniLiX
+** Internal settings for MiniLibX
 */
 
 #ifndef MLX_INT_H

@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 18:34:24 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/22 23:16:10 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include <stdio.h>
 # include "libft.h"
 # include "../gnl/get_next_line.h"
-# include "mlx_int.h"
 # include "structures.h"
+# include "colors.h"
+# include "mlx_int.h"
+# include "mlx_engine.h"
+# include <mlx.h>
 
 /*############################################################################*/
 /*                              PARSING FUNCTIONS                             */
@@ -39,13 +42,13 @@ int		file_empty(int fd);
 
 int		parsing_text(t_cub *data, char *path);
 int		parsing_lines_before_map(char *path, char **textures, char **colors);
-char	*ft_clean_whitespaces(char *line);
+void	free_double_char(char **array);
 
 /*############################################################################*/
 /*                              CHECK TEXTURE ELEMENTS                        */
 /*############################################################################*/
 
-int		check_texture_elements(char *tmp, char **textures);
+int		check_texture_elements(char **tmp, char **textures);
 int		add_last_texture(char *texture, char *tmp);
 
 /*############################################################################*/
@@ -53,7 +56,6 @@ int		add_last_texture(char *texture, char *tmp);
 /*############################################################################*/
 
 int		valide_textures(char **textures);
-int		trim_textures_str(char **textures);
 int		check_textures_extension(char **textures);
 int		check_textures_validity(char **textures);
 
@@ -61,13 +63,27 @@ int		check_textures_validity(char **textures);
 /*                              CHECK COLOR ELEMENTS                          */
 /*############################################################################*/
 
-int		check_color_elements(char **color, char *tmp);
+int		check_color_elements(char **color, char **tmp);
 int		add_last_color(char *color, char *tmp);
 
 /*############################################################################*/
 /*                              CHECK COLOR ELEMENTS                          */
 /*############################################################################*/
 
+int		valide_colors(char **colors);
+int		valid_characters(char **colors);
+int		range_colors(char **colors);
+int		range_colors(char **colors);
+
+/*############################################################################*/
+/*                              CHECK MAP                                     */
+/*############################################################################*/
 int		check_map(t_cub	*data);
 
+/*############################################################################*/
+/*                              store into t_cub                              */
+/*############################################################################*/
+
+int		textures_to_data(t_cub *data, char **textures);
+int		colors_to_data(t_cub *data, char **colors);
 #endif
