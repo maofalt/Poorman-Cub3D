@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 17:36:28 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:43:22 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int		range_colors(char **colors);
 /*############################################################################*/
 int		parse_map(char	*line, char ***map, int fd);
 int		check_map(char **map);
+int		check_valid_map_characters(char **map);
+int		valid_characters_map(char c);
 void	print_map(char **map);
 
 /*############################################################################*/
