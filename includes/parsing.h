@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 16:48:04 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:30:53 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		file_empty(int fd);
 /*############################################################################*/
 
 int		parsing_text(t_cub *data, char *path);
-int		parsing_lines(char *path, char **textures, char **colors, char **map);
+int		parsing_lines(char *path, char **textures, char **colors, char ***map);
 void	free_double_char(char **array);
 
 /*############################################################################*/
@@ -78,8 +78,9 @@ int		range_colors(char **colors);
 /*############################################################################*/
 /*                              CHECK MAP                                     */
 /*############################################################################*/
-int		parse_map(char	*line, char **map, int fd);
+int		parse_map(char	*line, char ***map, int fd);
 int		check_map(t_cub	*data);
+void	print_map(char **map);
 
 /*############################################################################*/
 /*                              store into t_cub                              */

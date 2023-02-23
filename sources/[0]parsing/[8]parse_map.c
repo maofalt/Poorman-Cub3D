@@ -6,15 +6,13 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:03:30 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 17:19:16 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:31:15 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	print_map(char **map);
-
-int	parse_map(char	*line, char **map, int fd)
+int	parse_map(char	*line, char ***map, int fd)
 {
 	char	*join;
 	char	*tmp;
@@ -32,10 +30,11 @@ int	parse_map(char	*line, char **map, int fd)
 		join = tmp;
 		line = get_next_line(fd);
 	}
-	map = ft_split(join, '\n');
-	if (!map)
+	*map = ft_split(join, '\n');
+	free(join);
+	if (!*map)
 		return (0);
-	print_map(map);
+	print_map(*map);
 	return (1);
 }
 

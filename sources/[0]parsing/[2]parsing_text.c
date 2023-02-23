@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 17:22:03 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:30:26 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	parsing_text(t_cub *data, char *path)
 	if (!colors)
 		return (free_double_char(textures), ft_putstr_fd("Error malloc\n", 2), 0);
 	colors[2] = NULL;
-	if (!parsing_lines(path, textures, colors, map))
+	if (!parsing_lines(path, textures, colors, &map))
 		return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
 	if (!valide_textures(textures))
 		return (ft_putstr_fd("Error\nIncorrect Map Information2\n", 2), 0);
@@ -47,10 +47,14 @@ int	parsing_text(t_cub *data, char *path)
 		return (ft_putstr_fd("Error\nUnexpected termination3\n", 2), 0);
 	if (!colors_to_data(data, colors))
 		return (ft_putstr_fd("Error\nUnexpected termination4\n", 2), 0);
+	free_double_char(textures);
+	free_double_char(colors);
+	print_map(map);
+	free_double_char(map);
 	return (1);
 }
 
-int	parsing_lines(char *path, char **textures, char **colors, char **map)
+int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 {
 	int		fd;
 	char	*line;
@@ -73,7 +77,10 @@ int	parsing_lines(char *path, char **textures, char **colors, char **map)
 			else if (check_texture_elements(tmp, textures, &mask) || check_color_elements(colors, tmp, &mask))
 				;
 			else if (mask >= 31 && parse_map(line, map, fd))
+			{
+				free_double_char(tmp);
 				break ;
+			}
 			else
 			{
 				if (tmp)
