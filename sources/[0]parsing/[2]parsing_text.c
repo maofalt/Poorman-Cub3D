@@ -28,13 +28,11 @@ int	parsing_text(t_cub *data, char *path)
 		return (free_double_char(textures), ft_putstr_fd("Error malloc\n", 2), 0);
 	colors[2] = NULL;
 	if (!parsing_lines_before_map(path, textures, colors))
-		return (ft_putstr_fd("Error\nIncorrect Map Information1\n", 2), 0);
+		return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
 	if (!valide_textures(textures))
 		return (ft_putstr_fd("Error\nIncorrect Map Information2\n", 2), 0);
 	if (!valide_colors(colors))
 		return (ft_putstr_fd("Error\nIncorrect Map Colors\n", 2), 0);
-	printf("textures: %s, %s, %s, %s\n", textures[0], textures[1], textures[2], textures[3]);
-	printf("colors: %s, %s\n", colors[0], colors[1]);
 	if (!textures_to_data(data, textures))
 		return (ft_putstr_fd("Error\nUnexpected termination3\n", 2), 0);
 	if (!colors_to_data(data, colors))

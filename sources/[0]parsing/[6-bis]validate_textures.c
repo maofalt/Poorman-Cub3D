@@ -15,11 +15,11 @@
 int	valide_textures(char **textures)
 {
 	if (!textures[0] || !textures[1] || !textures[2] || !textures[3])
-		return (printf("11"),0);
+		return (0);
 	if (!check_textures_extension(textures))
-		return (printf("22"),0);
+		return (0);
 	if (!check_textures_validity(textures))
-		return (printf("33"),0);
+		return (0);
 	return (1);
 }
 

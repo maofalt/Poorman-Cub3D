@@ -31,7 +31,7 @@ int	valid_characters(char **colors)
 	i = 0;
 	nbrs = NULL;
 	k = 0;
-	while (i < 3)
+	while (i < 2)
 	{
 		nbrs = ft_split(colors[i], ',');
 		if (!nbrs)
@@ -76,7 +76,7 @@ int	range_colors(char **colors)
 
 	i = 0;
 	nbrs = NULL;
-	while (i < 3)
+	while (i < 2)
 	{
 		nbrs = ft_split(colors[i], ',');
 		if (!nbrs)
@@ -88,7 +88,7 @@ int	range_colors(char **colors)
 			k = 0;
 			while (nbrs[j][k])
 			{
-				nbr = nbr * 10 + (nbrs[j][nbr] - '0');
+				nbr = nbr * 10 + (nbrs[j][k] - '0');
 				k++;
 			}
 			if (nbr < 0 || nbr > 255)
