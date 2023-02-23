@@ -19,22 +19,28 @@ int	check_color_elements(char **color, char **tmp, int *mask)
 	if (ft_strncmp(tmp[0], "F", 2) == 0)
 	{
 		*mask = *mask | 8;
-		return (add_last_color(color[0], tmp[1]));
+		return (add_last_color(&color[0], tmp[1]));
 	}
 	else if (ft_strncmp(tmp[0], "C", 2) == 0)
 	{
 		*mask = *mask | 16;
-		return (add_last_color(color[1], tmp[1]));
+		return (add_last_color(&color[1], tmp[1]));
 	}
 	return (0);
 }
 
-int	add_last_color(char *color, char *tmp)
+int	add_last_color(char **color, char *tmp)
 {
-	if (color)
-		free(color);
-	color = ft_strdup(tmp);
-	if (!color)
-		return (free(color), 1);
+	char	**tmp2;
+
+	if (*color)
+		free(*color);
+	tmp2 = ft_split(tmp, '\n');
+	if (!tmp2)
+		return (free_double_char(tmp2), 1);
+	*color = ft_strdup(tmp2[0]);
+	if (!*color)
+		return (free_double_char(tmp2), 1);
+	free_double_char(tmp2);
 	return (1);
 }

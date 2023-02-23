@@ -64,7 +64,7 @@ int		check_textures_validity(char **textures);
 /*############################################################################*/
 
 int		check_color_elements(char **color, char **tmp, int *mask);
-int		add_last_color(char *color, char *tmp);
+int		add_last_color(char **color, char *tmp);
 
 /*############################################################################*/
 /*                              CHECK COLOR ELEMENTS                          */

@@ -29,7 +29,6 @@ int	parsing_text(t_cub *data, char *path)
 	colors[2] = NULL;
 	if (!parsing_lines_before_map(path, textures, colors))
 		return (ft_putstr_fd("Error\nIncorrect Map Information1\n", 2), 0);
-	printf("textures1: %s, %s, %s, %s\n", textures[0], textures[1], textures[2], textures[3]);
 	if (!valide_textures(textures))
 		return (ft_putstr_fd("Error\nIncorrect Map Information2\n", 2), 0);
 	if (!valide_colors(colors))
@@ -60,7 +59,6 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 	{
 		if (line[0] != '\n' && line[0] != '\0')
 		{
-			printf("line: |%s|\n", line);
 			tmp = ft_split(line, ' ');
 			if (!tmp)
 				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
@@ -81,7 +79,6 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("textures inside : %s, %s, %s, %s\n", textures[0], textures[1], textures[2], textures[3]);
 	free(line);
 	get_next_line(-1);
 	return (1);
