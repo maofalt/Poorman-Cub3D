@@ -56,7 +56,7 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 		return (ft_putstr_fd("Error\nOpen() returned -1\n", 2), 0);
 	line = get_next_line(fd);
 	mask = 0;
-	while (line)
+	while (line && mask != 31)
 	{
 		if (line[0] != '\n' && line[0] != '\0')
 		{
@@ -81,6 +81,7 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 		free(line);
 		line = get_next_line(fd);
 	}
+	printf("textures inside : %s, %s, %s, %s\n", textures[0], textures[1], textures[2], textures[3]);
 	free(line);
 	get_next_line(-1);
 	return (1);

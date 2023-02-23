@@ -49,7 +49,7 @@ void	free_double_char(char **array);
 /*############################################################################*/
 
 int		check_texture_elements(char **tmp, char **textures, int *mask);
-int		add_last_texture(char *texture, char *tmp);
+int		add_last_texture(char **texture, char *tmp);
 
 /*############################################################################*/
 /*                              CHECK TEXTURE ELEMENTS                        */
@@ -63,7 +63,7 @@ int		check_textures_validity(char **textures);
 /*                              CHECK COLOR ELEMENTS                          */
 /*############################################################################*/
 
-int		check_color_elements(char **color, char **tmp,);
+int		check_color_elements(char **color, char **tmp, int *mask);
 int		add_last_color(char *color, char *tmp);
 
 /*############################################################################*/
