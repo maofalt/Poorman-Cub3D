@@ -12,7 +12,7 @@
 
 #include "parsing.h"
 
-int	check_color_elements(char **color, char **tmp)
+int	check_color_elements(char **color, char **tmp, int *mask)
 {
 	if (!tmp[0] || tmp[1] == 0 || tmp[2] != NULL)
 		return (0);

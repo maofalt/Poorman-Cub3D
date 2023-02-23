@@ -48,12 +48,14 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 	int		fd;
 	char	*line;
 	char	**tmp;
+	int		mask;
 
 	tmp = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error\nOpen() returned -1\n", 2), 0);
 	line = get_next_line(fd);
+	mask = 0;
 	while (line)
 	{
 		if (line[0] != '\n' && line[0] != '\0')
@@ -62,7 +64,7 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 			tmp = ft_split(line, ' ');
 			if (!tmp)
 				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
-			else if (check_texture_elements(tmp, textures) || check_color_elements(colors, tmp))
+			else if (check_texture_elements(tmp, textures, &mask) || check_color_elements(colors, tmp, &mask))
 				;
 			else
 			{
