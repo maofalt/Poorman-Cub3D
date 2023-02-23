@@ -6,14 +6,14 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:13:25 by motero            #+#    #+#             */
-/*   Updated: 2023/02/21 17:32:50 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:39:22 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	check_map(t_cub	*data)
+int	check_map(char **map)
 {
-	(void)data;
-	return (0);
+	(void)map;
+	return (1);
 }
