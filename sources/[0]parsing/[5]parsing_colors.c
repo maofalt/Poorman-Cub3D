@@ -14,11 +14,11 @@
 
 int	check_color_elements(char **color, char **tmp)
 {
-	if (!tmp[0] || tmp[2] != NULL)
+	if (!tmp[0] || tmp[1] == 0 || tmp[2] != NULL)
 		return (0);
-	if (ft_strncmp(tmp[0], "F ", 2) == 0)
+	if (ft_strncmp(tmp[0], "F", 2) == 0)
 		return (add_last_color(color[0], tmp[1]));
-	else if (ft_strncmp(tmp[0], "C ", 2) == 0)
+	else if (ft_strncmp(tmp[0], "C", 2) == 0)
 		return (add_last_color(color[1], tmp[1]));
 	return (0);
 }
