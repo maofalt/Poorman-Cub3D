@@ -12,6 +12,13 @@
 
 #include "parsing.h"
 
+/*function that will print the encoded rgb colors of floor and celling that are in uuint32_t*/
+void	print_colors(t_cub *data)
+{
+	printf("floor = %d\n", data->floor);
+	printf("celling = %d\n", data->celling);
+}
+
 int	parsing_text(t_cub *data, char *path)
 {
 	char		**textures;
@@ -37,6 +44,7 @@ int	parsing_text(t_cub *data, char *path)
 		return (ft_putstr_fd("Error\nUnexpected termination3\n", 2), 0);
 	if (!colors_to_data(data, colors))
 		return (ft_putstr_fd("Error\nUnexpected termination4\n", 2), 0);
+	print_colors(data);
 	return (1);
 }
 
@@ -99,3 +107,4 @@ void	free_double_char(char **array)
 	}
 	free(array);
 }
+

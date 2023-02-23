@@ -23,7 +23,8 @@ int	textures_to_data(t_cub *data, char **textures)
 	height = WINDOW_HEIGHT;
 	while (textures[i])
 	{
-		data->texture[i].mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, textures[i], &width, &height);
+		printf("textures[%d] = %s\n", i, textures[i]);
+		data->texture[i].mlx_img = mlx_xpm_file_to_image(&data->mlx_ptr, textures[i], &width, &height);
 		if (data->texture[i].mlx_img)
 			return (0);
 		i++;
