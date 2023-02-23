@@ -54,11 +54,11 @@ int	parsing_lines_before_map(char *path, char **textures, char **colors)
 	if (fd == -1)
 		return (ft_putstr_fd("Error\nOpen() returned -1\n", 2), 0);
 	line = get_next_line(fd);
-	printf("line: %s\n", line);
 	while (line)
 	{
-		if (line[0] != '\n' || line[0] != '\0')
+		if (line[0] != '\n' && line[0] != '\0')
 		{
+			printf("line: |%s|\n len =%zu", line, ft_strlen(line));
 			tmp = ft_split(line, ' ');
 			if (!tmp)
 				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);

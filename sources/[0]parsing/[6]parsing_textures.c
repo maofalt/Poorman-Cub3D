@@ -14,7 +14,7 @@
 
 int	check_texture_elements(char **tmp, char **textures)
 {
-	if (!tmp[0] || tmp[1] == NULL || tmp[2])
+	if (!tmp[0] || tmp[1] == NULL || tmp[2] != 0)
 		return (0);
 	if (ft_strncmp(tmp[0], "NO", 3) == 0)
 		return (add_last_texture(textures[0], tmp[1]));
