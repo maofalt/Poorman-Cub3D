@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 17:01:18 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:22:03 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	parsing_lines(char *path, char **textures, char **colors, char **map)
 			else if (check_texture_elements(tmp, textures, &mask) || check_color_elements(colors, tmp, &mask))
 				;
 			else if (mask >= 31 && parse_map(line, map, fd))
-				;
+				break ;
 			else
 			{
 				if (tmp)
