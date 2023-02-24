@@ -2,13 +2,25 @@
 # define STRUCTURES_H
 
 # include <stdint.h>
+# include <stdio.h>
 # include "libft.h"
 # include "../gnl/get_next_line.h"
+# include "colors.h"
 # include "mlx_int.h"
 
 /*############################################################################*/
 /*                              STRUCTURES                                    */
 /*############################################################################*/
+
+/* bpp = bits per pixel */
+typedef struct s_img_data
+{
+	void		*mlx_img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+}	t_img_data;
 
 /* Vector structure for 2D float vector
 ** Vector structure for 2D unsigned int vector
@@ -40,7 +52,10 @@ typedef struct s_cub
 	size_t		mapheight;
 	int			**map;
 	t_vector_f	player_pos;
-	t_img		texture[4];
+	t_img_data	texture[4];
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		img;
 }				t_cub;
 
 #endif

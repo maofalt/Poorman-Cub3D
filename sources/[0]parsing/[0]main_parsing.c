@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   [0]main.c                                          :+:      :+:    :+:   */
+/*   [0]main_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 13:11:18 by motero            #+#    #+#             */
-/*   Updated: 2023/02/22 20:55:30 by motero           ###   ########.fr       */
+/*   Created: 2023/02/21 11:30:35 by motero            #+#    #+#             */
+/*   Updated: 2023/02/23 19:42:30 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "parsing.h"
 
-int	main(int argc, char **argv)
+int	main_parsing(t_cub	*data, char *path)
 {
-	t_cub	data;
-
-	(void)argc;
-	(void)argv;
-	ft_memset(&data, 0, sizeof(t_cub));
-	if (!main_parsing(&data, argv[1]))
+	if (!valid_file(path))
 		return (1);
+	if (!parsing_text(data, path))
+		return (1);
+	return (0);
 }
