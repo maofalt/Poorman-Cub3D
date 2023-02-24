@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:39:01 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 23:28:06 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 23:55:51 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ int	transform_map(char ***map)
 	char		**new_map;
 
 	height = get_map_height(*map);
-	printf("height = %d\n", height);
 	width = get_map_width(*map);
-	printf("width = %d\n", width);
 	new_map = malloc(sizeof(char *) * (height + 3));
 	if (!new_map)
 		return (0);
@@ -99,9 +97,7 @@ int	transform_map(char ***map)
 	}
 	new_map[i] = NULL;
 	fill_map(&new_map, height, width);
-	print_map(new_map);
 	copy_map(&new_map, *map, height, width);
-	print_map(new_map);
 	free_double_char(*map);
 	*map = new_map;
 	return (1);

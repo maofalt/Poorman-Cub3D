@@ -50,7 +50,7 @@ typedef struct s_cub
 	uint32_t	celling;
 	size_t		mapwidth;
 	size_t		mapheight;
-	int			**map;
+	char		**map;
 	t_vector_f	player_pos;
 	t_img_data	texture[4];
 	void		*mlx_ptr;

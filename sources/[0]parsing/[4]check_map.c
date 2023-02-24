@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:13:25 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 18:15:43 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 23:55:12 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	check_map(char ***map)
 		return (ft_putstr_fd("Error\nMap is splitted\n", 2), 0);
 	if (!map_trim(map))
 		return (ft_putstr_fd("Error\nDuring cleansing\n", 2), 0);
-	print_map(*map);
 	if (!transform_map(map))
 		return (ft_putstr_fd("Error\nUnexpected failure\n", 2), 0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 17:50:48 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 23:52:44 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	parsing_text(t_cub *data, char *path)
 		return (ft_putstr_fd("Error\nUnexpected termination4\n", 2), 0);
 	if (!check_map(&map))
 		return (0);
+	data->map = map;
 	free_double_char(textures);
 	free_double_char(colors);
-	free_double_char(map);
 	return (1);
 }
 
