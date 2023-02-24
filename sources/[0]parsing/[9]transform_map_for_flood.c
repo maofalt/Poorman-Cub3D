@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:39:01 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 22:01:30 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 22:12:54 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,20 @@ int	transform_map(char ***map)
 	char		**new_map;
 
 	height = get_map_height(*map);
-	printf("height = %d\n", height);
 	width = get_map_width(*map);
-	printf("width = %d\n", width);
 	new_map = malloc(sizeof(char *) * (height + 3));
 	if (!new_map)
 		return (0);
 	i = 0;
 	while (i < height + 2)
 	{
-		new_map[i] = malloc(sizeof(char) * (width + 2));
+		new_map[i] = malloc(sizeof(char) * (width + 3));
 		if (!new_map[i])
 			return (0);
 		i++;
 	}
 	new_map[i] = NULL;
 	fill_map(&new_map, height, width);
-	print_map(new_map);
 	copy_map(&new_map, *map, height, width);
 	print_map(new_map);
 	free_double_char(*map);
@@ -151,14 +148,17 @@ void	copy_map(char ***new_map, char **map, int height, int width)
 {
 	int	i;
 	int	j;
+	int	len;
 
 	i = 1;
+	len = 0;
 	while (i < height + 1)
 	{
 		j = 1;
 		while (j < width + 1)
 		{
-			if (map[i - 1][j - 1] != ' ' && map[i - 1][j - 1] != '\0')
+			len = ft_strlen(map[i - 1]);
+			if (len > j && map[i - 1][j - 1] != ' ' && map[i - 1][j - 1] != '\0')
 				(*new_map)[i][j] = map[i - 1][j - 1];
 			j++;
 		}
