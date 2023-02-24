@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:39:01 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 18:14:05 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 22:01:30 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,109 @@ void	free_uneeded_lines(char ***map, int i)
 		else
 			break ;
 		i--;
+	}
+}
+
+/*
+** Transform the map for flood fill algorithm
+** 1- get the size of the maps
+** 2- create a new map with the size of the old map 
+** size map = (height of the map + 2) * (size of the line + 2)
+** 3- fill al the map with *
+** 4- copy the old map in the new map starting from the second line 
+** and the second column
+** 5- free the old map
+** 6- print the new map
+** 7- return the new map
+*/
+
+int	transform_map(char ***map)
+{
+	int			i;
+	int			height;
+	int			width;
+	char		**new_map;
+
+	height = get_map_height(*map);
+	printf("height = %d\n", height);
+	width = get_map_width(*map);
+	printf("width = %d\n", width);
+	new_map = malloc(sizeof(char *) * (height + 3));
+	if (!new_map)
+		return (0);
+	i = 0;
+	while (i < height + 2)
+	{
+		new_map[i] = malloc(sizeof(char) * (width + 2));
+		if (!new_map[i])
+			return (0);
+		i++;
+	}
+	new_map[i] = NULL;
+	fill_map(&new_map, height, width);
+	print_map(new_map);
+	copy_map(&new_map, *map, height, width);
+	print_map(new_map);
+	free_double_char(*map);
+	*map = new_map;
+	return (1);
+}
+
+int	get_map_height(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+int	get_map_width(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[0][i])
+		i++;
+	return (i);
+}
+
+void	fill_map(char ***map, int height, int width)
+{
+	int				i;
+	int				j;
+	const char		fill = '*';
+
+	i = 0;
+	while (i < height + 2)
+	{
+		j = 0;
+		while (j < width + 2)
+		{
+			(*map)[i][j] = fill;
+			j++;
+		}
+		(*map)[i][j] = '\0';
+		i++;
+	}
+}
+
+void	copy_map(char ***new_map, char **map, int height, int width)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < height + 1)
+	{
+		j = 1;
+		while (j < width + 1)
+		{
+			if (map[i - 1][j - 1] != ' ' && map[i - 1][j - 1] != '\0')
+				(*new_map)[i][j] = map[i - 1][j - 1];
+			j++;
+		}
+		i++;
 	}
 }

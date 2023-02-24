@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 18:01:57 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 21:55:40 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include "mlx_int.h"
 # include "mlx_engine.h"
 # include <mlx.h>
+
+# include <wchar.h>
+# include <uchar.h>
+# include <locale.h>
 
 /*############################################################################*/
 /*                              PARSING FUNCTIONS                             */
@@ -99,4 +103,10 @@ int		colors_to_data(t_cub *data, char **colors);
 
 int		map_trim(char ***map);
 void	free_uneeded_lines(char ***map, int i);
+int		transform_map(char ***map);
+int		get_map_height(char **map);
+int		get_map_width(char **map);
+void	fill_map(char ***map, int height, int width);
+void	copy_map(char ***new_map, char **map, int height, int width);
+
 #endif
