@@ -6,20 +6,21 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:13:25 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 17:29:16 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 18:14:40 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	check_map(char **map)
+int	check_map(char ***map)
 {
-	if (!check_valid_map_characters(map))
+	if (!check_valid_map_characters(*map))
 		return (ft_putstr_fd("Error\nInvalid characters in map\n", 2), 0);
-	if (!check_valid_map_no_split(map))
+	if (!check_valid_map_no_split(*map))
 		return (ft_putstr_fd("Error\nMap is splitted\n", 2), 0);
 	if (!map_trim(map))
 		return (ft_putstr_fd("Error\nDuring cleansing\n", 2), 0);
+	print_map(*map);
 	return (1);
 }
 
