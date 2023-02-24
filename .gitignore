@@ -1,3 +1,5 @@
 *.o
-/objects
 cub3D
+*.d
+/obj
+
