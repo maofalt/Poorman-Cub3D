@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:39:01 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 22:38:07 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 23:28:06 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,11 +173,10 @@ void	copy_map(char ***new_map, char **map, int height, int width)
 		while (j < width + 1)
 		{
 			len = ft_strlen(map[i - 1]);
-			if (len > j && map[i - 1][j - 1] != ' ' && map[i - 1][j - 1] != '\0')
+			if ((len + 1) > j && map[i - 1][j - 1] != ' ' && map[i - 1][j - 1] != '\0')
 				(*new_map)[i][j] = map[i - 1][j - 1];
 			j++;
 		}
 		i++;
 	}
 }
-
