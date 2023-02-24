@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 18:08:50 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 17:04:31 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ int	parsing_text(t_cub *data, char *path)
 	if (!colors_to_data(data, colors))
 		return (ft_putstr_fd("Error\nUnexpected termination4\n", 2), 0);
 	if (!check_map(map))
-		return (ft_putstr_fd("Error\nIncorrect Map\n", 2), 0);
+		return (0);
 	free_double_char(textures);
 	free_double_char(colors);
-	print_map(map);
 	free_double_char(map);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:03:30 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 18:15:23 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 17:28:55 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 	{
-		printf("%s", map[i]);
+		printf("%s\n", map[i]);
 		i++;
 	}
 }

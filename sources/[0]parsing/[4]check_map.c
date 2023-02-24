@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:13:25 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 23:45:12 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 17:29:16 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 int	check_map(char **map)
 {
 	if (!check_valid_map_characters(map))
-		return (0);
+		return (ft_putstr_fd("Error\nInvalid characters in map\n", 2), 0);
 	if (!check_valid_map_no_split(map))
-		return (0);
-	if (!map_trim_EOL_spaces(map))
-		return (0);
-	if (map_trim_EOF_newlines(map))
-		return (0);
+		return (ft_putstr_fd("Error\nMap is splitted\n", 2), 0);
+	if (!map_trim(map))
+		return (ft_putstr_fd("Error\nDuring cleansing\n", 2), 0);
 	return (1);
 }
 
@@ -41,7 +39,7 @@ int	check_valid_map_characters(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (valid_characters(map[i][j]))
+			if (!valid_characters_map(map[i][j]))
 				return (0);
 			j++;
 		}
@@ -58,31 +56,54 @@ int	valid_characters_map(char c)
 	return (0);
 }
 
+/*
+** This function will check if the map is not splited by empty lines.
+** We will check if the line is empty  with line_is_empty, 
+** which returns 1 if it is empty
+** and 0 if it is not.
+** Once a line is empty, we will check if the subsequents lines are empty too.
+** If they are not, it means that the map is splited by empty lines.
+** If it is the case, we will return 0.
+** If we reach the end of the map, it means that the map is valid 
+** and we will return 1.
+ */
 int	check_valid_map_no_split(char **map)
 {
-	int		i;
-	int		j;
-	char	c;
+	int	i;
 
 	i = 0;
 	while (map[i])
 	{
-		j = 0;
-		while (map[i][j])
+		if (line_is_empty(map[i]))
 		{
-			c = map[i][j];
-			if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '1' || c == '0')
+			i++;
+			while (map[i])
 			{
-				if (map[i][j + 1] == '\0' && map[i + 1] == NULL)
+				if (!line_is_empty(map[i]))
 					return (0);
+				i++;
+				if (!map[i])
+					return (1);
 			}
-			else if (c == ' ')
-			{
-				
-			}
-			else if (c == '\n')
-			j++;
 		}
+		i++;
+	}
+	return (1);
+}
+
+/* Line is empty is   all he characters are a space and finishes 
+** by \n or if there is only one \n, It returns 1 if it is empty
+** Otherwise it returns 0
+*/
+int	line_is_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\n')
+			return (0);
 		i++;
 	}
 	return (1);

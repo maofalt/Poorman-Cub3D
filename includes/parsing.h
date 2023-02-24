@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 19:43:22 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/24 17:16:42 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int		parse_map(char	*line, char ***map, int fd);
 int		check_map(char **map);
 int		check_valid_map_characters(char **map);
 int		valid_characters_map(char c);
+int		check_valid_map_no_split(char **map);
+int		line_is_empty(char *line);
 void	print_map(char **map);
 
 /*############################################################################*/
@@ -90,4 +92,10 @@ void	print_map(char **map);
 
 int		textures_to_data(t_cub *data, char **textures);
 int		colors_to_data(t_cub *data, char **colors);
+
+/*############################################################################*/
+/*                              MAP PREPARATION FOR FLOOD                     */
+/*############################################################################*/
+
+int		map_trim(char **map);
 #endif
