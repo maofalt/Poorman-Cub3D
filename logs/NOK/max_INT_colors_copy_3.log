@@ -1,0 +1,133 @@
+==413518== Memcheck, a memory error detector
+==413518== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==413518== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==413518== Command: ./cub3D maps/maps_buged/max_INT_colors_copy_3.cub
+==413518== 
+Error
+Incorrect Map Colors
+==413518== 
+==413518== FILE DESCRIPTORS: 4 open (3 std) at exit.
+==413518== Open file descriptor 3: maps/maps_buged/max_INT_colors_copy_3.cub
+==413518==    at 0x4C356EB: open (open64.c:41)
+==413518==    by 0x40417C: parsing_lines ([2]parsing_text.c:66)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 
+==413518== HEAP SUMMARY:
+==413518==     in use at exit: 1,165 bytes in 36 blocks
+==413518==   total heap usage: 1,057 allocs, 1,021 frees, 22,663 bytes allocated
+==413518== 
+==413518== 9 bytes in 1 blocks are indirectly lost in loss record 1 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x404B9C: ft_strdup (ft_strdup.c:21)
+==413518==    by 0x402D07: add_last_color ([5]parsing_colors.c:41)
+==413518==    by 0x402C7F: check_color_elements ([5]parsing_colors.c:27)
+==413518==    by 0x40424F: parsing_lines ([2]parsing_text.c:78)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 13 bytes in 1 blocks are indirectly lost in loss record 2 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x404B9C: ft_strdup (ft_strdup.c:21)
+==413518==    by 0x402D07: add_last_color ([5]parsing_colors.c:41)
+==413518==    by 0x402C2F: check_color_elements ([5]parsing_colors.c:22)
+==413518==    by 0x40424F: parsing_lines ([2]parsing_text.c:78)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 18 bytes in 1 blocks are indirectly lost in loss record 3 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x404B9C: ft_strdup (ft_strdup.c:21)
+==413518==    by 0x402F67: add_last_texture ([6]parsing_textures.c:51)
+==413518==    by 0x402ECF: check_texture_elements ([6]parsing_textures.c:37)
+==413518==    by 0x404235: parsing_lines ([2]parsing_text.c:78)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 18 bytes in 1 blocks are indirectly lost in loss record 4 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x404B9C: ft_strdup (ft_strdup.c:21)
+==413518==    by 0x402F67: add_last_texture ([6]parsing_textures.c:51)
+==413518==    by 0x402E2F: check_texture_elements ([6]parsing_textures.c:27)
+==413518==    by 0x404235: parsing_lines ([2]parsing_text.c:78)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 19 bytes in 1 blocks are indirectly lost in loss record 5 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x404B9C: ft_strdup (ft_strdup.c:21)
+==413518==    by 0x402F67: add_last_texture ([6]parsing_textures.c:51)
+==413518==    by 0x402DDF: check_texture_elements ([6]parsing_textures.c:22)
+==413518==    by 0x404235: parsing_lines ([2]parsing_text.c:78)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 19 bytes in 1 blocks are indirectly lost in loss record 6 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x404B9C: ft_strdup (ft_strdup.c:21)
+==413518==    by 0x402F67: add_last_texture ([6]parsing_textures.c:51)
+==413518==    by 0x402E7F: check_texture_elements ([6]parsing_textures.c:32)
+==413518==    by 0x404235: parsing_lines ([2]parsing_text.c:78)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 46 (24 direct, 22 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x402A8D: ft_calloc (get_next_line_utils.c:86)
+==413518==    by 0x403F40: parsing_text ([2]parsing_text.c:36)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 55 bytes in 1 blocks are indirectly lost in loss record 8 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x402A8D: ft_calloc (get_next_line_utils.c:86)
+==413518==    by 0x40258B: ft_extract_line (get_next_line.c:50)
+==413518==    by 0x402803: get_next_line (get_next_line.c:111)
+==413518==    by 0x40432A: parsing_lines ([2]parsing_text.c:101)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 114 (40 direct, 74 indirect) bytes in 1 blocks are definitely lost in loss record 9 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x402A8D: ft_calloc (get_next_line_utils.c:86)
+==413518==    by 0x403EF6: parsing_text ([2]parsing_text.c:32)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 726 bytes in 26 blocks are indirectly lost in loss record 10 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x402A8D: ft_calloc (get_next_line_utils.c:86)
+==413518==    by 0x40258B: ft_extract_line (get_next_line.c:50)
+==413518==    by 0x402803: get_next_line (get_next_line.c:111)
+==413518==    by 0x403009: parse_map ([8]parse_map.c:37)
+==413518==    by 0x404277: parsing_lines ([2]parsing_text.c:80)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== 1,005 (224 direct, 781 indirect) bytes in 1 blocks are definitely lost in loss record 11 of 11
+==413518==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==413518==    by 0x40302A: parse_map ([8]parse_map.c:39)
+==413518==    by 0x404277: parsing_lines ([2]parsing_text.c:80)
+==413518==    by 0x403F99: parsing_text ([2]parsing_text.c:40)
+==413518==    by 0x402B6A: main_parsing ([0]main_parsing.c:19)
+==413518==    by 0x402B0F: main ([0]main.c:22)
+==413518== 
+==413518== LEAK SUMMARY:
+==413518==    definitely lost: 288 bytes in 3 blocks
+==413518==    indirectly lost: 877 bytes in 33 blocks
+==413518==      possibly lost: 0 bytes in 0 blocks
+==413518==    still reachable: 0 bytes in 0 blocks
+==413518==         suppressed: 0 bytes in 0 blocks
+==413518== 
+==413518== For lists of detected and suppressed errors, rerun with: -s
+==413518== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

@@ -1,6 +1,6 @@
-NO textures/invalid_textures.xpm
+NO textures/north.xpm
 SO textures/south.xpm
-WE textures/west.xpm
+WEST textures/west.xpm
 EA textures/east.xpm
 
 F 0,0,1

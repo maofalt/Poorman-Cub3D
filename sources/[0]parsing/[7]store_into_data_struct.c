@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:28:12 by motero            #+#    #+#             */
-/*   Updated: 2023/02/22 22:37:05 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/25 19:14:53 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	textures_to_data(t_cub *data, char **textures)
 	height = WINDOW_HEIGHT;
 	while (textures[i])
 	{
-		printf("textures[%d] = %s\n", i, textures[i]);
 		data->texture[i].mlx_img = mlx_xpm_file_to_image(&data->mlx_ptr, textures[i], &width, &height);
 		if (data->texture[i].mlx_img)
 			return (0);

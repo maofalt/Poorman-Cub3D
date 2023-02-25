@@ -1,11 +1,10 @@
-NO textures/invalid_textures.xpm
 SO textures/south.xpm
 WE textures/west.xpm
 EA textures/east.xpm
 
 F 0,0,1
 C 225,30,0
-
+NO textures/invalid_textures/protected_texture.xpm
 
 
 
