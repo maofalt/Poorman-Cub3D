@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 23:52:44 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/25 18:40:36 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ int	parsing_text(t_cub *data, char *path)
 	map = NULL;
 	textures = ft_calloc(5, sizeof(char *));
 	if (!textures)
-		return (ft_putstr_fd("Error malloc\n", 2), 0);
+		return (ft_putstr_fd("Error malloc\n", 1), 0);
 	textures[4] = NULL;
 	colors = ft_calloc(3, sizeof(char *));
 	if (!colors)
-		return (free_double_char(textures), ft_putstr_fd("Error malloc\n", 2), 0);
+		return (free_double_char(textures), ft_putstr_fd("Error malloc\n", 1), 0);
 	colors[2] = NULL;
 	if (!parsing_lines(path, textures, colors, &map))
-		return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
+		return (ft_putstr_fd("Error\nIncorrect Map Information\n", 1), 0);
 	if (!valide_textures(textures))
-		return (ft_putstr_fd("Error\nIncorrect Map Information2\n", 2), 0);
+		return (ft_putstr_fd("Error\nIncorrect Map Information2\n", 1), 0);
 	if (!valide_colors(colors))
-		return (ft_putstr_fd("Error\nIncorrect Map Colors\n", 2), 0);
+		return (ft_putstr_fd("Error\nIncorrect Map Colors\n", 1), 0);
 	if (!textures_to_data(data, textures))
-		return (ft_putstr_fd("Error\nUnexpected termination3\n", 2), 0);
+		return (ft_putstr_fd("Error\nUnexpected termination3\n", 1), 0);
 	if (!colors_to_data(data, colors))
-		return (ft_putstr_fd("Error\nUnexpected termination4\n", 2), 0);
+		return (ft_putstr_fd("Error\nUnexpected termination4\n", 1), 0);
 	if (!check_map(&map))
 		return (0);
 	data->map = map;
@@ -65,7 +65,7 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 	tmp = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (ft_putstr_fd("Error\nOpen() returned -1\n", 2), 0);
+		return (ft_putstr_fd("Error\nOpen() returned -1\n", 1), 0);
 	line = get_next_line(fd);
 	mask = 0;
 	while (line)
@@ -74,7 +74,7 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 		{
 			tmp = ft_split(line, ' ');
 			if (!tmp)
-				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
+				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 1), 0);
 			else if (check_texture_elements(tmp, textures, &mask) || check_color_elements(colors, tmp, &mask))
 				;
 			else if (mask >= 31 && parse_map(line, map, fd))
@@ -90,7 +90,7 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 					free(line);
 				line = NULL;
 				get_next_line(-1);
-				return (ft_putstr_fd("Error\nIncorrect Map Information33\n", 2), 0);
+				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 1), 0);
 			}
 		}
 		if (tmp)
