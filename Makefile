@@ -6,7 +6,7 @@
 #    By: motero <motero@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 18:38:23 by motero            #+#    #+#              #
-#    Updated: 2023/02/21 13:10:15 by motero           ###   ########.fr        #
+#    Updated: 2023/02/24 16:47:44 by motero           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = cub3D
 #                                 HEADERS                                     #
 #=============================================================================#
 
-HDR_NAME = cub3D.h parsing.h structures.h mlx.h
+HDR_NAME = cub3D.h parsing.h structures.h mlx.h mlx_int.h mlx_engine.h colors.h
 HDR_DIR = includes/
 HDRS = $(addprefix $(HDR_DIR), $(HDR_NAME))
 HDR_INC = -I includes -I libft/includes -I minilibx-linux/
@@ -84,7 +84,7 @@ OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 #=============================================================================#
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-g -fpie #-fsanitize=leak -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fpie #-fsanitize=leak -fsanitize=address
 LIBA = ar rc
 LIBS = ranlib
 
@@ -156,7 +156,7 @@ normal := $(shell tput sgr0)
 #                                RULES                                        #
 #=============================================================================#
 
-all: check_libft project ${NAME} ${HDRS}
+all: check_libft check_mlx project ${NAME} ${HDRS}
 		@echo "\n $(GREEN) $(bold) \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/"
 		@echo "\t \t[ $(GREEN)✔$(NONE)] $(bold)Project is ready [ $(GREEN)✔$(NONE)]"
 		@echo "$(GREEN) $(bold) /|\ /|\ /|\ /|\ /|\ /|\ /|\ /|\ /|\ /|\ /|\ /|\ /|\ \n"
@@ -166,6 +166,10 @@ check_libft:
 		@echo "============================================="
 		@make -C libft
 
+check_mlx:
+		@echo "\n[ $(BLUE)$(bold)CHECKING MINILIBX$(NONE)]"
+		@echo "============================================="
+		@make -C includes/minilibx-linux/ mlx
 
 project:
 		@echo "\n == $(bold)$(YELLOW)CHECKING PROJECT$(normal)=="
@@ -181,12 +185,12 @@ $(OBJS_PATH):
 		@echo "\t [ $(GREEN)✔$(NONE)] $@directories"
 
 $(OBJS_PATH)%.o: $(SRCS_DIR_project)%.c $(HDRS)
-		@$(CC) $(CFLAGS) $(HDR_INC) $(LIBFT_HDIR_INC) -o $@ -c $<
+		@$(CC) $(CFLAGS) $(HDR_INC) $(LIBFT_HDIR_INC) $(MINILIBX_HDIR_INC) -o $@ -c $<
 		@echo "\t[ $(GREEN)✔$(NONE) ] $@ objet project"
 
 $(NAME): $(GNL_OBJ) $(OBJS_PATH) $(OBJS) $(HDRS)
 		@echo $(SRCS_ALL)
-		@$(CC) $(CFLAGS) $(GNL_OBJ) $(OBJS) $(LIB_BINARY) $(HDR_INC) -o $@
+		@$(CC) $(CFLAGS) $(GNL_OBJ) $(OBJS) $(LIB_BINARY) $(MINILIBX_BINARY) $(HDR_INC) -o $@
 		@echo "\t[ $(GREEN)✔$(NONE) ] project"
 
 malloc_test: $(OBJS_PATH) ${GNL_OBJ} $(OBJS)
