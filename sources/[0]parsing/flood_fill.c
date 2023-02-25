@@ -20,27 +20,37 @@ void flood_fill(char **tab, int width, int height, int xstart, int ystart)
     f_fill(tab, width, height, xstart, ystart);
 }
 
-inline int player(char c)
+int check_player(char c)
 {
     return(c == 'N' || c == 'W' || c == 'E' || c == 'S');
 }
+
+
 int	get_player_pos(char **map)
 {
 	int x;
 	int	y;
+    int pos;
+    int player;
 
+    player = 0;
     y = 0;
 	while (map[y])
     {
         x = 0;
         while (map[y][x])
         {
-            if (player(map[y][x]))
-	            return ((y << 16) | x);
+            if (check_player(map[y][x]))
+	        {
+                pos = ((y << 16) | x);
+                player++;
+            }
             x++;
         }
         y++;
     }
+    if (player == 1)
+        return (pos);
     return (0);
 	/* to decode the parameter :
 	*y = (pos >> 16) & 0xFFFF;
@@ -49,7 +59,8 @@ int	get_player_pos(char **map)
 
 int main()
 {
-    int i, j;
+   int i, j;
+   (void)j;
     char *test[] = {
 "***********************************\0",
 "*1111111111111111111111111*********\0",
@@ -95,7 +106,9 @@ int main()
     pos = get_player_pos(copy);
     y = (pos >> 16) & 0xFFFF;
     x = pos & 0xFFFF;
-    flood_fill(copy, width, height, 2, 2);
+    printf("x = %d y = %d\n", x, y);
+    copy[y][x] = '0';
+    flood_fill(copy, width, height, y, x);
 
     // Print the original array
     printf("Original array:\n");
