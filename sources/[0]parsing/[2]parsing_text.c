@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/25 18:40:36 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/26 15:34:20 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 			free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	get_next_line(-1);
 	return (1);
 }

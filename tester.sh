@@ -21,7 +21,7 @@ echo -e "\n$(tput setaf 4)r"""\
 "  ╚███╔███╔██║  █████████╚████████║  ███████████║  ██║  \n"\
 "   ╚══╝╚══╝╚═╝  ╚═╚══════╝╚═════╚═╝  ╚═╚══════╚═╝  ╚═╝  \n"\
 """$(tput sgr0)\n"                                                                            
-
+sleep 3
 
 # ANSI escape codes for colors
 COLOR_BLUE='\033[0;34m'

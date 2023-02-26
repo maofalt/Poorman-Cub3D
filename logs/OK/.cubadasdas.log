@@ -1,18 +1,18 @@
-==412995== Memcheck, a memory error detector
-==412995== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==412995== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==412995== Command: ./cub3D maps/maps_buged/.cubadasdas
-==412995== 
+==1165761== Memcheck, a memory error detector
+==1165761== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1165761== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1165761== Command: ./cub3D maps/maps_buged/.cubadasdas
+==1165761== 
 Error
 Invalid file extension
-==412995== 
-==412995== FILE DESCRIPTORS: 3 open (3 std) at exit.
-==412995== 
-==412995== HEAP SUMMARY:
-==412995==     in use at exit: 0 bytes in 0 blocks
-==412995==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==412995== 
-==412995== All heap blocks were freed -- no leaks are possible
-==412995== 
-==412995== For lists of detected and suppressed errors, rerun with: -s
-==412995== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1165761== 
+==1165761== FILE DESCRIPTORS: 3 open (3 std) at exit.
+==1165761== 
+==1165761== HEAP SUMMARY:
+==1165761==     in use at exit: 0 bytes in 0 blocks
+==1165761==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==1165761== 
+==1165761== All heap blocks were freed -- no leaks are possible
+==1165761== 
+==1165761== For lists of detected and suppressed errors, rerun with: -s
+==1165761== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
