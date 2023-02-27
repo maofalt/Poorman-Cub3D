@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:28:36 by motero            #+#    #+#             */
-/*   Updated: 2023/02/22 20:59:25 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/26 23:01:41 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int	valid_characters(char **colors)
 	k = 0;
 	while (i < 2)
 	{
+		if (nbr_commas(colors[i]) != 2)
+			return (0);
 		nbrs = ft_split(colors[i], ',');
 		if (!nbrs)
 			return (0);
 		if (nbrs[0] == NULL || nbrs[1] == NULL || nbrs[2] == NULL || nbrs[3] != NULL)
-			return (0);
+			return (free_double_char(nbrs), 0);
 		k = 0;
 		while (nbrs[k])
 		{

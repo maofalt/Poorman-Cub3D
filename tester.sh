@@ -48,68 +48,87 @@ files=$(ls -a maps/maps_buged)
 total_tests=$(echo "$files" | wc -l)
 
 # Step 1bis: Make program
-clear && make && clear
+clear && make re && clear
 
 # Step 2 and 3: Launch the program with valgrind and write into log file
 for file in $files; do
+	(
+		full_path="maps/maps_buged/$file"
+    	# Print the filename in blue
+    	echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
+		echo -e "${COLOR_BLUE}$(printf '%b' "${FORMAT_BOLD}Testing $full_path:${FORMAT_RESET}")${COLOR_RESET}"
+    	echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
 
-	full_path="maps/maps_buged/$file"
-    # Print the filename in blue
-    echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
-	echo -e "${COLOR_BLUE}$(printf '%b' "${FORMAT_BOLD}Testing $full_path:${FORMAT_RESET}")${COLOR_RESET}"
-    echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
+    	# Launch the program with valgrind
+    	output=$(valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./cub3D "$full_path" 2>&1)
+		#check if the file start with valid to know if we should expect an error or not
+    	if [[ "$file" == "valid_"* ]]; then
 
-    # Launch the program with valgrind
-    output=$(valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./cub3D "$full_path" 2>&1)
+			# Determine the directory to write the log file to and colorize the output
+			if echo "$output" | grep -q "definitely lost: 0 bytes\|All heap blocks were freed -- no leaks are possible"; then
+    		    dir="logs/OK"
+				passed_tests=$((passed_tests + 1))
+    		    color="${COLOR_GREEN}"
+    		    result="OK"
+    	    else
+    		    dir="logs/NOK"
+    		    color="${COLOR_RED}"
+    		    result="NOK"
+    	    fi
+		else
+			# Determine the directory to write the log file to and colorize the output
+    		if echo "$output" | grep -q "Error" && echo "$output" | grep -q "definitely lost: 0 bytes\|All heap blocks were freed -- no leaks are possible"; then
+    		    dir="logs/OK"
+				passed_tests=$((passed_tests + 1))
+    		    color="${COLOR_GREEN}"
+    		    result="OK"
+    		else
+    		    dir="logs/NOK"
+    		    color="${COLOR_RED}"
+    		    result="NOK"
+    		fi
+		fi
 
-    # Determine the directory to write the log file to and colorize the output
-    if echo "$output" | grep -q "Error" && echo "$output" | grep -q "definitely lost: 0 bytes\|All heap blocks were freed -- no leaks are possible"; then
-        dir="logs/OK"
-		passed_tests=$((passed_tests + 1))
-        color="${COLOR_GREEN}"
-        result="OK"
-    else
-        dir="logs/NOK"
-        color="${COLOR_RED}"
-        result="NOK"
-    fi
+    	# Print the output in white with the appropriate color
+    	echo -e "${color}${output}${COLOR_RESET}"
 
-    # Print the output in white with the appropriate color
-    echo -e "${color}${output}${COLOR_RESET}"
+    	# Write into log file
+    	mkdir -p "$dir"
+    	echo "$output" > "$dir/$(basename "$file" .cub).log"
 
-    # Write into log file
-    mkdir -p "$dir"
-    echo "$output" > "$dir/$(basename "$file" .cub).log"
+    	# Print the result in green or red
+    	echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
+    	echo -e "${color}${result}${COLOR_RESET}"
+		echo -e "\033[1m$passed_tests\033[0m tests passed."
+		echo -e "over \033[1m$total_tests\033[0m."
+    	echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
 
-    # Print the result in green or red
-    echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
-    echo -e "${color}${result}${COLOR_RESET}"
-	echo -e "\033[1m$passed_tests\033[0m tests passed."
-	echo -e "over \033[1m$total_tests\033[0m."
-    echo -e "${COLOR_BLUE}===============================${COLOR_RESET}"
+		    # Print progress bar
+    	progress=$(echo "scale=2; $passed_tests / $total_tests * 100" | bc)
 
-	    # Print progress bar
-    progress=$(echo "scale=2; $passed_tests / $total_tests * 100" | bc)
-
-	# Calculate the number of filled and empty blocks in the progress bar
-	filled_blocks=$(echo "$progress / (100 / $progress_bar_width)" | bc)
-	empty_blocks=$((progress_bar_width - filled_blocks))
-    
-	printf "["
-	progress_bar="${COLOR_GREEN}"
-    for ((i=0; i<filled_blocks; i++)); do
-        progress_bar+=${progress_bar_symbol}
-    done
-	progress_bar+="${COLOR_RED}"
-    for ((i=0; i<empty_blocks; i++)); do
-		progress_bar+=${progress_bar_symbol}
-    done
-	progress_bar+="${COLOR_RESET}"
-    echo -e "Progress: [${progress_bar}] ${progress}%"
-	#printf "] %d%%\n" $((passed_tests * 100 / total_tests))
+		# Calculate the number of filled and empty blocks in the progress bar
+		filled_blocks=$(echo "$progress / (100 / $progress_bar_width)" | bc)
+		empty_blocks=$((progress_bar_width - filled_blocks))
+	
+		printf "["
+		progress_bar="${COLOR_GREEN}"
+    	for ((i=0; i<filled_blocks; i++)); do
+    	    progress_bar+=${progress_bar_symbol}
+    	done
+		progress_bar+="${COLOR_RED}"
+    	for ((i=0; i<empty_blocks; i++)); do
+			progress_bar+=${progress_bar_symbol}
+    	done
+		progress_bar+="${COLOR_RESET}"
+    	echo -e "Progress: [${progress_bar}] ${progress}%"
+		#printf "] %d%%\n" $((passed_tests * 100 / total_tests))
+	) &
 done
+
+# Wait for all tests to complete
+wait
+
 sleep 5
-clear
 # Print a new line after the progress bar
 echo -e "\n"
     

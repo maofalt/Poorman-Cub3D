@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:28:12 by motero            #+#    #+#             */
-/*   Updated: 2023/02/25 19:14:53 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 02:11:59 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ int	textures_to_data(t_cub *data, char **textures)
 	int		height;
 
 	i = 0;
-	width = WINDOW_WIDTH;
-	height = WINDOW_HEIGHT;
+	width = 0;
+	height = 0;
 	while (textures[i])
 	{
-		data->texture[i].mlx_img = mlx_xpm_file_to_image(&data->mlx_ptr, textures[i], &width, &height);
-		if (data->texture[i].mlx_img)
+		data->texture[i].mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, textures[i], &width, &height);
+		if (!data->texture[i].mlx_img)
+		{
+			data->texture[i].mlx_img = NULL;
 			return (0);
+		}
 		i++;
 	}
 	return (1);

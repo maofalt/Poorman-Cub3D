@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:28:44 by motero            #+#    #+#             */
-/*   Updated: 2023/02/22 23:43:39 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 01:18:58 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_textures_validity(char **textures)
 	{
 		fd = open(textures[i], O_RDONLY);
 		if (fd == -1)
-			return (close(fd), 0);
+			return (0);
 		close(fd);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 21:55:40 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/26 23:00:33 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 /*############################################################################*/
 
 int		main_parsing(t_cub	*data, char *path);
+int		initialize_double_char(char **array, int size);
+int		nbr_commas(char *str);
 
 /*############################################################################*/
 /*                              CHECK VALID FILE                              */
@@ -47,6 +49,7 @@ int		file_empty(int fd);
 int		parsing_text(t_cub *data, char *path);
 int		parsing_lines(char *path, char **textures, char **colors, char ***map);
 void	free_double_char(char **array);
+void	free_all(char **textures, char **colors, char **map);
 
 /*############################################################################*/
 /*                              CHECK TEXTURE ELEMENTS                        */
