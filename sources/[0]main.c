@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:11:18 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 02:22:03 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:20:00 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,5 @@ int	main(int argc, char **argv)
 	if (!main_parsing(&data, argv[1]))
 		return (free_everything(data), 1);
 	printf("ENd	\n");
-	mlx_destroy_image(data.mlx_ptr, data.texture[0].mlx_img);
-	mlx_destroy_image(data.mlx_ptr, data.texture[1].mlx_img);
-	mlx_destroy_image(data.mlx_ptr, data.texture[2].mlx_img);
-	mlx_destroy_image(data.mlx_ptr, data.texture[3].mlx_img);
-	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-	free(data.mlx_ptr);
+	free_everything(data);
 }

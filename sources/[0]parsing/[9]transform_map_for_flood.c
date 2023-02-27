@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:39:01 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 23:55:51 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:21:47 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,68 +111,4 @@ int	get_map_height(char **map)
 	while (map[i])
 		i++;
 	return (i);
-}
-
-int	get_map_width(char **map)
-{
-	int	i;
-	int	j;
-	int	max;
-
-	max = 0;
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			j++;
-		}
-		if (j > max)
-			max = j;
-		i++;
-	}
-	return (max);
-}
-
-void	fill_map(char ***map, int height, int width)
-{
-	int				i;
-	int				j;
-	const char		fill = '*';
-
-	i = 0;
-	while (i < height + 2)
-	{
-		j = 0;
-		while (j < width + 2)
-		{
-			(*map)[i][j] = fill;
-			j++;
-		}
-		(*map)[i][j] = '\0';
-		i++;
-	}
-}
-
-void	copy_map(char ***new_map, char **map, int height, int width)
-{
-	int	i;
-	int	j;
-	int	len;
-
-	i = 1;
-	len = 0;
-	while (i < height + 1)
-	{
-		j = 1;
-		while (j < width + 1)
-		{
-			len = ft_strlen(map[i - 1]);
-			if ((len + 1) > j && map[i - 1][j - 1] != ' ' && map[i - 1][j - 1] != '\0')
-				(*new_map)[i][j] = map[i - 1][j - 1];
-			j++;
-		}
-		i++;
-	}
 }

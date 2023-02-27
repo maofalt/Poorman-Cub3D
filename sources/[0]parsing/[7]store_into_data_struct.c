@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:28:12 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 02:11:59 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:03:19 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	textures_to_data(t_cub *data, char **textures)
 	height = 0;
 	while (textures[i])
 	{
-		data->texture[i].mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, textures[i], &width, &height);
+		data->texture[i].mlx_img = \
+		mlx_xpm_file_to_image(data->mlx_ptr, textures[i], &width, &height);
 		if (!data->texture[i].mlx_img)
 		{
 			data->texture[i].mlx_img = NULL;
@@ -47,9 +48,11 @@ int	colors_to_data(t_cub *data, char **colors)
 		if (!tmp)
 			return (0);
 		if (i == 0)
-			data->floor = encode_rgb(1, ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
+			data->floor = \
+			encode_rgb(1, ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
 		else
-			data->celling = encode_rgb(1, ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
+			data->celling = \
+			encode_rgb(1, ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
 		free_double_char(tmp);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:30:35 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 01:57:05 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:30:19 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main_parsing(t_cub	*data, char *path)
 		return (0);
 	if (!parsing_text(data, path))
 		return (0);
+	printf("Parsing done\n");
 	free_double_char(data->map);
 	return (1);
 }
@@ -74,4 +75,17 @@ void	print_double_char(char **str)
 		i++;
 	}
 	printf("\n");
+}
+
+/*
+** function that reprlace the free_double_char function and the ft_putstr_fd
+** function in one line	
+** It will free the double char array and print the error message that is passed
+*/
+void	print_error(char *message)
+{
+	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd(message, 1);
+	ft_putstr_fd("\n", 1);
+	return (0);
 }

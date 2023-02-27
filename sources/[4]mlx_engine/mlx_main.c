@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 02:54:58 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:25:30 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_mlx_initialize_pointers(t_cub *data)
 		free(data->mlx_ptr);
 		return (1);
 	}
-	ft_mlx_create_window_and_image(data);
 	return (0);
 }
 

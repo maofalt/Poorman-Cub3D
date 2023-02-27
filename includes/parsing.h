@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/26 23:00:33 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:32:14 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 int		main_parsing(t_cub	*data, char *path);
 int		initialize_double_char(char **array, int size);
 int		nbr_commas(char *str);
+int		print_error(char *message);
 
 /*############################################################################*/
 /*                              CHECK VALID FILE                              */
@@ -47,6 +48,7 @@ int		file_empty(int fd);
 /*############################################################################*/
 
 int		parsing_text(t_cub *data, char *path);
+int		init_textures_colors(char **textures, char **colors);
 int		parsing_lines(char *path, char **textures, char **colors, char ***map);
 void	free_double_char(char **array);
 void	free_all(char **textures, char **colors, char **map);
@@ -78,9 +80,12 @@ int		add_last_color(char **color, char *tmp);
 /*############################################################################*/
 
 int		valide_colors(char **colors);
+int		check_commas(char *str);
+int		check_digits(char *str);
+int		check_nbrs(char **nbrs);
 int		valid_characters(char **colors);
 int		range_colors(char **colors);
-int		range_colors(char **colors);
+int		check_color_range(char *color);
 
 /*############################################################################*/
 /*                              CHECK MAP                                     */
