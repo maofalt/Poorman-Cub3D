@@ -56,6 +56,7 @@ typedef struct s_cub
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		img;
+	t_img_data	screen;
 }				t_cub;
 
 #endif

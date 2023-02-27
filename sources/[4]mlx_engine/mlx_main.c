@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 02:22:56 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 02:54:58 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@ int	ft_mlx_initialize_pointers(t_cub *data)
 		free(data->mlx_ptr);
 		return (1);
 	}
+	ft_mlx_create_window_and_image(data);
 	return (0);
 }
 
 int	ft_mlx_create_window_and_image(t_cub *data)
 {
 	(void)data;
-	// data->img.mlx_img = mlx_new_image(data->mlx_ptr,
-	// 		WINDOW_WIDTH, WINDOW_HEIGHT);
-	// if (data->img.mlx_img == NULL)
-	// {
-	// 	free(data->mlx_ptr);
-	// 	free(data->win_ptr);
-	// 	return (1);
-	// }
-	// data->img.addr = mlx_get_data_addr(data->img.mlx_img,
-	// 		&data->img.bpp, &data->img.line_len, &data->img.endian);
+	data->screen.mlx_img = mlx_new_image(data->mlx_ptr,
+			WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (data->screen.mlx_img == NULL)
+	{
+		free(data->mlx_ptr);
+		free(data->win_ptr);
+		return (1);
+	}
+	data->screen.addr = mlx_get_data_addr(data->screen.mlx_img,
+			&data->screen.bpp, &data->screen.line_len, &data->screen.endian);
 	return (0);
 }
