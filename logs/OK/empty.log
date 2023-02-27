@@ -1,18 +1,409 @@
-==1165929== Memcheck, a memory error detector
-==1165929== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1165929== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==1165929== Command: ./cub3D maps/maps_buged/empty.cub
-==1165929== 
+==462975== Memcheck, a memory error detector
+==462975== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==462975== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==462975== Command: ./cub3D maps/maps_buged/empty.cub
+==462975== 
 Error
 File is empty
-==1165929== 
-==1165929== FILE DESCRIPTORS: 3 open (3 std) at exit.
-==1165929== 
-==1165929== HEAP SUMMARY:
-==1165929==     in use at exit: 0 bytes in 0 blocks
-==1165929==   total heap usage: 1 allocs, 1 frees, 1 bytes allocated
-==1165929== 
-==1165929== All heap blocks were freed -- no leaks are possible
-==1165929== 
-==1165929== For lists of detected and suppressed errors, rerun with: -s
-==1165929== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==462975== 
+==462975== FILE DESCRIPTORS: 4 open (3 std) at exit.
+==462975== Open AF_UNIX socket 3: <unknown>
+==462975==    at 0x4C48CEB: socket (syscall-template.S:120)
+==462975==    by 0x4D8834D: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8A797: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x491BDE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 
+==462975== HEAP SUMMARY:
+==462975==     in use at exit: 101,409 bytes in 77 blocks
+==462975==   total heap usage: 1,149 allocs, 1,072 frees, 138,153 bytes allocated
+==462975== 
+==462975== 3 bytes in 1 blocks are still reachable in loss record 1 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4BC960E: strdup (strdup.c:42)
+==462975==    by 0x490BA55: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 8 bytes in 1 blocks are still reachable in loss record 2 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4BC960E: strdup (strdup.c:42)
+==462975==    by 0x49088BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x48CD820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 8 bytes in 1 blocks are still reachable in loss record 3 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48CBB34: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 10 bytes in 1 blocks are still reachable in loss record 4 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4BC960E: strdup (strdup.c:42)
+==462975==    by 0x49088BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4971FD3: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490C5B8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 16 bytes in 1 blocks are still reachable in loss record 5 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4D8A2EE: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8AE6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x491BDE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 21 bytes in 1 blocks are still reachable in loss record 6 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490BF4E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 24 bytes in 1 blocks are still reachable in loss record 7 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48CD041: XextCreateExtension (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD4CC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 24 bytes in 1 blocks are still reachable in loss record 8 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4BC960E: strdup (strdup.c:42)
+==462975==    by 0x49088BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x48CD820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD50A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 24 bytes in 1 blocks are still reachable in loss record 9 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48CD9F5: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 29 bytes in 1 blocks are still reachable in loss record 10 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4904EED: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4907839: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405B22: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 32 bytes in 1 blocks are still reachable in loss record 11 of 41
+==462975==    at 0x48487A9: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4D8E15E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8E237: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8E2EE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8E364: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x490C43B: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 32 bytes in 1 blocks are still reachable in loss record 12 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4D871B7: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D87A08: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D87EB0: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D88E44: xcb_wait_for_reply (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8E292: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8E2EE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8E364: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x490C43B: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 32 bytes in 1 blocks are still reachable in loss record 13 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48CD7FF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 32 bytes in 1 blocks are still reachable in loss record 14 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48CD7FF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD50A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 33 bytes in 1 blocks are still reachable in loss record 15 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4904EED: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4907839: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405B0B: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 40 bytes in 1 blocks are still reachable in loss record 16 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491C0F1: _XPollfdCacheInit (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BD81: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 48 bytes in 1 blocks are still reachable in loss record 17 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491BD71: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 48 bytes in 1 blocks are still reachable in loss record 18 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491BD87: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 72 bytes in 1 blocks are still reachable in loss record 19 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490BE30: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 112 bytes in 1 blocks are still reachable in loss record 20 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491BC72: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 112 bytes in 1 blocks are still reachable in loss record 21 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490C110: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 128 bytes in 1 blocks are still reachable in loss record 22 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490C03E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 128 bytes in 1 blocks are still reachable in loss record 23 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x49088AE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4971FD3: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490C5B8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 128 bytes in 1 blocks are still reachable in loss record 24 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x49088AE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x48CD820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 128 bytes in 1 blocks are still reachable in loss record 25 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x49088AE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x48CD820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD50A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 149 bytes in 1 blocks are still reachable in loss record 26 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490C620: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 152 bytes in 1 blocks are still reachable in loss record 27 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x49721CE: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490C5B8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 160 bytes in 1 blocks are still reachable in loss record 28 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48FA9AF: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490C4B4: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 168 bytes in 1 blocks are still reachable in loss record 29 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490BFC2: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 208 bytes in 1 blocks are still reachable in loss record 30 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x48CBAE9: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48CD9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x48D29E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==462975==    by 0x4058B3: mlx_int_deal_shm (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405B31: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 208 bytes in 1 blocks are still reachable in loss record 31 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491DEAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4920AB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4921DC0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4922105: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405E05: mlx_int_wait_first_expose (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405CED: mlx_new_window (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404C22: ft_mlx_initialize_pointers (mlx_main.c:20)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 512 bytes in 1 blocks are still reachable in loss record 32 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490730A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490775E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405B0B: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 832 bytes in 4 blocks are still reachable in loss record 33 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491DEAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4920AB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4921E01: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4922105: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405E05: mlx_int_wait_first_expose (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405CED: mlx_new_window (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404C22: ft_mlx_initialize_pointers (mlx_main.c:20)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 832 bytes in 4 blocks are still reachable in loss record 34 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491DEAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4920AB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4921DC0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x49220D0: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405E05: mlx_int_wait_first_expose (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405CED: mlx_new_window (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404C22: ft_mlx_initialize_pointers (mlx_main.c:20)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 3,120 bytes in 15 blocks are still reachable in loss record 35 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491DEAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4920AB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4921E01: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x49220D0: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405E05: mlx_int_wait_first_expose (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x405CED: mlx_new_window (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404C22: ft_mlx_initialize_pointers (mlx_main.c:20)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 3,328 bytes in 16 blocks are still reachable in loss record 36 of 41
+==462975==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x491DEAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4920AB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x4920B69: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x48FB83D: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x402BB4: free_everything ([0]main.c:25)
+==462975==    by 0x402C52: main ([0]main.c:40)
+==462975== 
+==462975== 4,704 bytes in 1 blocks are still reachable in loss record 37 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490BA41: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 14,612 bytes in 1 blocks are still reachable in loss record 38 of 41
+==462975==    at 0x484DCD3: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4D8A4FB: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8AE6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x491BDE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 16,384 bytes in 1 blocks are still reachable in loss record 39 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490BDCE: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 21,168 bytes in 1 blocks are still reachable in loss record 40 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x4D8A204: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x4D8AE6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==462975==    by 0x491BDE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x490BA78: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== 33,600 bytes in 2 blocks are still reachable in loss record 41 of 41
+==462975==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==462975==    by 0x490C1A0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==462975==    by 0x405A77: mlx_init (in /mnt/nfs/homes/motero/42/Poorman-Cub3D/cub3D)
+==462975==    by 0x404BD2: ft_mlx_initialize_pointers (mlx_main.c:17)
+==462975==    by 0x402C07: main ([0]main.c:36)
+==462975== 
+==462975== LEAK SUMMARY:
+==462975==    definitely lost: 0 bytes in 0 blocks
+==462975==    indirectly lost: 0 bytes in 0 blocks
+==462975==      possibly lost: 0 bytes in 0 blocks
+==462975==    still reachable: 101,409 bytes in 77 blocks
+==462975==         suppressed: 0 bytes in 0 blocks
+==462975== 
+==462975== For lists of detected and suppressed errors, rerun with: -s
+==462975== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

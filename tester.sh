@@ -42,6 +42,11 @@ progress_bar_symbol='█'
 rm -rf logs
 mkdir logs
 
+# Step 0-bis: Update rights of one map and oen texture to test the error message
+chmod 000 maps/maps_buged/no_rigts.cub
+chmod 000 maps/maps_buged/no_rights_no_extension
+chmod 000 textures/invalid_textures/protected_texture.xpm
+
 # Step 1: Retrieve all files and count the number of  files
 dir_path="maps/maps_buged/"
 files=$(ls -a maps/maps_buged)
@@ -127,6 +132,11 @@ done
 
 # Wait for all tests to complete
 wait
+
+# Step Final: Update rights of one map and oen texture to test the error message
+chmod 777 maps/maps_buged/no_rigts.cub
+chmod 777 maps/maps_buged/no_rights_no_extension
+chmod 777 textures/invalid_textures/protected_texture.xpm
 
 sleep 5
 # Print a new line after the progress bar
