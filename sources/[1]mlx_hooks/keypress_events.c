@@ -12,23 +12,39 @@
 
 #include "mlx_engine.h"
 
-int	ft_destroy_window(t_cub *data)
-{	
-	free_everything(data);
-	exit(1);
-	return (0);
-}
-
-int	ft_handle_keyrelease(int keysym, t_cub *data)
+void	ft_destroy_window_button(int keysym, t_cub *data)
 {
-	(void)data;
 	if (keysym == XK_Escape)
-		ft_printf("EScape released\n");
-	return (0);
+	{
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
+	}
 }
 
-int	ft_handle_boutonpress(int buttonsym, int x, int y, t_data *data)
-{
 
-	return (0);
+	/* Events catching movements and moving into the fractal window*/
+void	ft_movements_keys(int keysym, t_cub *data)
+{
+    (void)keysym;
+    (void)data;
+    if (keysym == UP_KEY || keysym == RIGHT_KEY)
+        printf("UP or RIGHT pressed\n");
+    if (keysym == UP_KEY || keysym == DOWN_KEY)
+        printf("UP or DOWN pressed\n");
+    else if (keysym == RIGHT_KEY || keysym == LEFT_KEY)
+        printf("RIGHT or LEFT pressed\n");
+}
+
+void	ft_keyboard_press(int keysym, t_cub *data)
+{
+    (void)keysym;
+    (void)data;
+    if (keysym == Z_KEY)
+        printf("Z pressed\n");
+    else if (keysym == Z_KEY)
+        printf("S pressed\n");
+    else if (keysym == Z_KEY)
+        printf("Q pressed\n");
+    else if (keysym == D_KEY)
+        printf("D pressed\n");
 }

@@ -21,5 +21,13 @@
 # include "mlx_engine.h"
 # include "mlx_int.h"
 # include "colors.h"
+# include "raycasting.h"
+
+
+
+/*############################################################################*/
+/*                              GENERAL FUNCTIONS                             */
+/*############################################################################*/
+void	free_everything(t_cub data);
 
 #endif

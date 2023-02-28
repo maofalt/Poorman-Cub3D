@@ -13,6 +13,8 @@
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
+# include "mlx.h"
+# include "mlx_int.h"
 # include <stdlib.h>
 # include <stdint.h>
 # include "structures.h"
@@ -20,5 +22,6 @@
 /*############################################################################*/
 /*                          RAYCASTINGFUNCTIONS                               */
 /*############################################################################*/
+int	ft_render(t_cub*data);
 
 #endif

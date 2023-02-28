@@ -18,7 +18,6 @@ int	main_parsing(t_cub	*data, char *path)
 		return (0);
 	if (!parsing_text(data, path))
 		return (0);
-	print_map(data->map);
 	free_double_char(data->map);
 	return (1);
 }

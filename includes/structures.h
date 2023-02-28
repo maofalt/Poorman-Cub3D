@@ -69,6 +69,7 @@ typedef struct s_cub
 	void		*win_ptr;
 	t_img		img;
 	t_img_data	screen;
+	int			update;
 }				t_cub;
 
 #endif
