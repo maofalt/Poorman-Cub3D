@@ -16,7 +16,7 @@
 **event has modified underlying constants*/
 int	ft_render(t_cub *data)
 {
-	printf("inside ft_render\n");
+	//printf("inside ft_render\n");
 	if (data->win_ptr == NULL)
 		return (1);
 	if (data->update)

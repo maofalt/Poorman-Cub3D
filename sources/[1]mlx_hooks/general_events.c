@@ -32,6 +32,7 @@ int	ft_handle_boutonpress(int buttonsym, int x, int y, t_cub *data)
 	(void)data;
 	(void)x;
 	(void)y;
+	ft_printf("Button1 pressed with id %d\n", buttonsym);
 	if (buttonsym == Button1)
 		ft_printf("Button1 pressed\n");
 	return (0);

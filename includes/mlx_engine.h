@@ -43,6 +43,9 @@
 # define C_KEY 99
 # define X_KEY 122
 # define Z_KEY 120
+# define Q_KEY 113
+# define S_KEY 100
+# define A_KEY 97
 
 
 # define WINDOW_WIDTH 1920

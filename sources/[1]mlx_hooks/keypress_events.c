@@ -27,6 +27,7 @@ void	ft_movements_keys(int keysym, t_cub *data)
 {
     (void)keysym;
     (void)data;
+    printf("button pressend id %d\n", keysym);
     if (keysym == UP_KEY || keysym == RIGHT_KEY)
         printf("UP or RIGHT pressed\n");
     if (keysym == UP_KEY || keysym == DOWN_KEY)
@@ -39,6 +40,7 @@ void	ft_keyboard_press(int keysym, t_cub *data)
 {
     (void)keysym;
     (void)data;
+    printf("button pressend id %d\n", keysym);
     if (keysym == Z_KEY)
         printf("Z pressed\n");
     else if (keysym == Z_KEY)
