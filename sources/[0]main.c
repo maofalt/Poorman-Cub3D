@@ -14,6 +14,8 @@
 
 void	free_everything(t_cub data)
 {
+	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+	data.win_ptr = NULL;
 	if (data.texture[0].mlx_img != NULL)
 		mlx_destroy_image(data.mlx_ptr, data.texture[0].mlx_img);
 	if (data.texture[1].mlx_img != NULL)
@@ -22,7 +24,8 @@ void	free_everything(t_cub data)
 		mlx_destroy_image(data.mlx_ptr, data.texture[2].mlx_img);
 	if (data.texture[3].mlx_img != NULL)
 		mlx_destroy_image(data.mlx_ptr, data.texture[3].mlx_img);
-	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+	mlx_destroy_image(data.mlx_ptr, data.screen.mlx_img);
+	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }
 

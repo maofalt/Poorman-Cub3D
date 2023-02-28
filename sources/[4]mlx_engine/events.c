@@ -12,35 +12,23 @@
 
 #include "mlx_engine.h"
 
-int	ft_mlx_initialize_pointers(t_cub *data)
-{
-	data->mlx_ptr = mlx_init();
-	if (data->mlx_ptr == NULL)
-		return (1);
-	data->win_ptr = mlx_new_window(data->mlx_ptr,
-			WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
-	if (data->win_ptr == NULL)
-	{
-		free(data->mlx_ptr);
-		return (1);
-	}
-	if (ft_mlx_create_window_and_image(data))
-		return (1);
+int	ft_destroy_window(t_cub *data)
+{	
+	free_everything(data);
+	exit(1);
 	return (0);
 }
 
-int	ft_mlx_create_window_and_image(t_cub *data)
+int	ft_handle_keyrelease(int keysym, t_cub *data)
 {
 	(void)data;
-	data->screen.mlx_img = mlx_new_image(data->mlx_ptr,
-			WINDOW_WIDTH, WINDOW_HEIGHT);
-	if (data->screen.mlx_img == NULL)
-	{
-		free(data->mlx_ptr);
-		free(data->win_ptr);
-		return (1);
-	}
-	data->screen.addr = mlx_get_data_addr(data->screen.mlx_img,
-			&data->screen.bpp, &data->screen.line_len, &data->screen.endian);
+	if (keysym == XK_Escape)
+		ft_printf("EScape released\n");
+	return (0);
+}
+
+int	ft_handle_boutonpress(int buttonsym, int x, int y, t_data *data)
+{
+
 	return (0);
 }

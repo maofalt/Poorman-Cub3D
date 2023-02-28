@@ -18,7 +18,7 @@ int	main_parsing(t_cub	*data, char *path)
 		return (0);
 	if (!parsing_text(data, path))
 		return (0);
-	printf("Parsing done\n");
+	print_map(data->map);
 	free_double_char(data->map);
 	return (1);
 }
@@ -87,5 +87,4 @@ void	print_error(char *message)
 	ft_putstr_fd("Error\n", 1);
 	ft_putstr_fd(message, 1);
 	ft_putstr_fd("\n", 1);
-	return (0);
 }

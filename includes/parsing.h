@@ -34,7 +34,7 @@
 int		main_parsing(t_cub	*data, char *path);
 int		initialize_double_char(char **array, int size);
 int		nbr_commas(char *str);
-int		print_error(char *message);
+void		print_error(char *message);
 
 /*############################################################################*/
 /*                              CHECK VALID FILE                              */
@@ -48,7 +48,7 @@ int		file_empty(int fd);
 /*############################################################################*/
 
 int		parsing_text(t_cub *data, char *path);
-int		init_textures_colors(char **textures, char **colors);
+int		init_textures_colors(char ***textures, char ***colors);
 int		parsing_lines(char *path, char **textures, char **colors, char ***map);
 void	free_double_char(char **array);
 void	free_all(char **textures, char **colors, char **map);

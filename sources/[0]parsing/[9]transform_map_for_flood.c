@@ -112,3 +112,25 @@ int	get_map_height(char **map)
 		i++;
 	return (i);
 }
+
+int	get_map_width(char **map)
+{
+	int	i;
+	int	j;
+	int	max;
+
+	max = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			j++;
+		}
+		if (j > max)
+			max = j;
+		i++;
+	}
+	return (max);
+}

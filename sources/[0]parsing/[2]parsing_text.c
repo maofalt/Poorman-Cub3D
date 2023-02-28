@@ -52,7 +52,7 @@ int	parsing_text(t_cub *data, char *path)
 	return (1);
 }
 
-int	init_textures_colors(char **textures, char **colors)
+int	init_textures_colors(char ***textures, char ***colors)
 {
 	*textures = ft_calloc(5, sizeof(char *));
 	if (!*textures)

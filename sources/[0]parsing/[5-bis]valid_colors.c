@@ -72,12 +72,10 @@ int	check_nbrs(char **nbrs)
 int	valid_characters(char **colors)
 {
 	int		i;
-	int		j;
 	char	**nbrs;
 
 	i = 0;
 	nbrs = NULL;
-	j = 0;
 	while (i < 2)
 	{
 		if (!check_commas(colors[i]))
