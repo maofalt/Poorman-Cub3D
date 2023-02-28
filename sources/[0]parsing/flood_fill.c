@@ -69,10 +69,23 @@ int check_case(char **map)
         x = 0;
         while(map[y][x])
         {
-            if (map[y][x] == '0' && (map[y -1][x] - '0') + (map[y][x -1] - '0') + (map[y + 1][x]- '0') + (map[y][x + 1]- '0') > 4)
-                return (0);
+            printf("%c", (map[y][x]));
+            if (map[y][x] == '0')
+            {
+
+                if (!check_player(map[y][x -1]) && map[y][x -1]  > '1')
+                    return(0);
+                if (!check_player(map[y][x + 1]) && map[y][x + 1]  > '1')
+                    return(0);
+                if (!check_player(map[y + 1][x]) && map[y + 1][x] > '1')
+                    return(0);
+                if (!check_player(map[y -1][x]) && map[y - 1][x]  > '1')
+                    return(0);
+            }
             x++;
         }
+        printf("\n");
+        
         y++;
     }
     return (1);
@@ -91,7 +104,7 @@ int main()
 "21111111110110000011100000111111112\0",
 "21000000000110000011101111111111112\0",
 "21111011111111101110000001000122222\0,"
-"21111011111111101110101001000122222\0",
+"21111011111111101110101001000022222\0",
 "21100000011010101110000001000122222\0",
 "21000000000000000110000001000122222\0",
 "21000000000000000110101001000122222\0",
@@ -118,8 +131,8 @@ int main()
         copy[i] = (char *) malloc((width + 1) * sizeof(char));
         strcpy(copy[i], test[i]);
     }
-    if (check_case(copy) == 0)
-        return (printf("NEIN\n"), 0);
+   // if (check_case(copy) == 0)
+       // return (printf("NEIN\n"), 0);
 
     // Perform flood fill on the copy
     int x;
