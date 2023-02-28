@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:13:25 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 23:55:12 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/25 00:06:30 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	check_map(char ***map)
 {
 	if (!check_valid_map_characters(*map))
-		return (ft_putstr_fd("Error\nInvalid characters in map\n", 2), 0);
+		return (ft_putstr_fd("Error\nInvalid characters in map\n", 1), 0);
 	if (!check_valid_map_no_split(*map))
-		return (ft_putstr_fd("Error\nMap is splitted\n", 2), 0);
+		return (ft_putstr_fd("Error\nMap is splitted\n", 1), 0);
 	if (!map_trim(map))
-		return (ft_putstr_fd("Error\nDuring cleansing\n", 2), 0);
+		return (ft_putstr_fd("Error\nDuring cleansing\n", 1), 0);
 	if (!transform_map(map))
-		return (ft_putstr_fd("Error\nUnexpected failure\n", 2), 0);
+		return (ft_putstr_fd("Error\nUnexpected failure\n", 1), 0);
 	return (1);
 }
 

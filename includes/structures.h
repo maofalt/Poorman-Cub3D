@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structures.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/27 03:24:57 by motero            #+#    #+#             */
+/*   Updated: 2023/02/27 03:25:12 by motero           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
@@ -29,7 +41,7 @@ typedef struct s_img_data
 ** to be 16 bytes, divided into int sized units.
 ** SIMD vectorrization 
 ** https://users.ece.cmu.edu/~franzf/teaching/slides-18-645-simd.pdf
-** http://gcc.gnu.org/onlinedocs/gcc-4.6.1/gcc/Vector-Extensions.html#Vector-Extensions
+** 
 */
 
 typedef float			t_vector_f __attribute__((vector_size (8)));
@@ -56,6 +68,7 @@ typedef struct s_cub
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		img;
+	t_img_data	screen;
 }				t_cub;
 
 #endif

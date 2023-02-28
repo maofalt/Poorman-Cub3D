@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:35:54 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 23:52:44 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:35:54 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,43 @@ int	parsing_text(t_cub *data, char *path)
 	char		**colors;
 	char		**map;
 
-	map = NULL;
-	textures = ft_calloc(5, sizeof(char *));
-	if (!textures)
-		return (ft_putstr_fd("Error malloc\n", 2), 0);
-	textures[4] = NULL;
-	colors = ft_calloc(3, sizeof(char *));
-	if (!colors)
-		return (free_double_char(textures), ft_putstr_fd("Error malloc\n", 2), 0);
-	colors[2] = NULL;
+	if (!init_textures_colors(&textures, &colors))
+		return (print_error("Error malloc"), 0);
 	if (!parsing_lines(path, textures, colors, &map))
-		return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
+		return (free_all(textures, colors, map), \
+		print_error("Incorrect Map Information while parse"), 0);
 	if (!valide_textures(textures))
-		return (ft_putstr_fd("Error\nIncorrect Map Information2\n", 2), 0);
+		return (free_all(textures, colors, map), \
+		print_error("Incorrect Map Information2"), 0);
 	if (!valide_colors(colors))
-		return (ft_putstr_fd("Error\nIncorrect Map Colors\n", 2), 0);
+		return (free_all(textures, colors, map), \
+		print_error("Incorrect Map Colors"), 0);
 	if (!textures_to_data(data, textures))
-		return (ft_putstr_fd("Error\nUnexpected termination3\n", 2), 0);
+		return (free_all(textures, colors, map), \
+		print_error("Unexpected termination"), 0);
 	if (!colors_to_data(data, colors))
-		return (ft_putstr_fd("Error\nUnexpected termination4\n", 2), 0);
+		return (free_all(textures, colors, map), \
+		print_error("Unexpected termination"), 0);
 	if (!check_map(&map))
-		return (0);
+		return (free_all(textures, colors, map), 0);
 	data->map = map;
-	free_double_char(textures);
-	free_double_char(colors);
+	free_all(textures, colors, NULL);
+	return (1);
+}
+
+int	init_textures_colors(char ***textures, char ***colors)
+{
+	*textures = ft_calloc(5, sizeof(char *));
+	if (!*textures)
+		return (print_error("Error malloc\n"), 0);
+	if (!initialize_double_char(*textures, 5))
+		return (free_double_char(*textures), print_error("Error malloc"), 0);
+	*colors = ft_calloc(3, sizeof(char *));
+	if (!*colors)
+		return (free_double_char(*textures), print_error("Error malloc"), 0);
+	if (!initialize_double_char(*colors, 3))
+		return (free_double_char(*textures), free_double_char(*colors), \
+		print_error("Error malloc"), 0);
 	return (1);
 }
 
@@ -65,7 +78,7 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 	tmp = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (ft_putstr_fd("Error\nOpen() returned -1\n", 2), 0);
+		return (ft_putstr_fd("Error\nOpen() returned -1\n", 1), 0);
 	line = get_next_line(fd);
 	mask = 0;
 	while (line)
@@ -74,8 +87,9 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 		{
 			tmp = ft_split(line, ' ');
 			if (!tmp)
-				return (ft_putstr_fd("Error\nIncorrect Map Information\n", 2), 0);
-			else if (check_texture_elements(tmp, textures, &mask) || check_color_elements(colors, tmp, &mask))
+				return (ft_putstr_fd("Error\nInvalid text line\n", 1), 0);
+			else if (check_texture_elements(tmp, textures, &mask) || \
+			check_color_elements(colors, tmp, &mask))
 				;
 			else if (mask >= 31 && parse_map(line, map, fd))
 			{
@@ -90,7 +104,8 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 					free(line);
 				line = NULL;
 				get_next_line(-1);
-				return (ft_putstr_fd("Error\nIncorrect Map Information33\n", 2), 0);
+				close(fd);
+				return (ft_putstr_fd("Error\nParse error\n", 1), 0);
 			}
 		}
 		if (tmp)
@@ -98,15 +113,13 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 		tmp = NULL;
 		if (line)
 			free(line);
+		line = NULL;
 		line = get_next_line(fd);
 	}
+	close(fd);
 	get_next_line(-1);
 	return (1);
 }
-
-/*
-** Free a double  char array
-*/
 
 void	free_double_char(char **array)
 {
@@ -115,9 +128,16 @@ void	free_double_char(char **array)
 	i = 0;
 	while (array[i])
 	{
-		if (array[i])
-			free(array[i]);
+		free(array[i]);
 		i++;
 	}
 	free(array);
+}
+
+void	free_all(char **textures, char **colors, char **map)
+{
+	free_double_char(textures);
+	free_double_char(colors);
+	if (map)
+		free_double_char(map);
 }

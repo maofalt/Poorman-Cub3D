@@ -6,7 +6,7 @@
 #    By: motero <motero@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 18:38:23 by motero            #+#    #+#              #
-#    Updated: 2023/02/24 16:47:44 by motero           ###   ########.fr        #
+#    Updated: 2023/02/25 23:38:11 by motero           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -236,17 +236,7 @@ $(PROFILE) : $(OBJS_PATH_PROFILER) $(OBJS_PROFILER) $(LIBFT) $(HDRS)
 sanitizer: fclean check_libft project ${SANITIZE} ${HDRS} run_san
 
 run_san: project_sanitize
-	@echo "\n\[ $(BLUE)$(bold)===EXECUTING BINARY====$(NONE)]\n"
-	./project_sanitize $(var)
-
-$(OBJS_PATH_SANITIZE):
-		@mkdir $@
-		@echo "\t [ $(GREEN)✔$(NONE)] $@directory"
-
-$(OBJS_PATH_SANITIZE)%.o: $(SRCS_DIR_project)%.c $(HDRS) $(LIBFT)
-		@$(CC) $(CFLAGS) $(SANITIZE_FLAG) $(HDR_INC) $(LIBFT_HDIR_INC) -o $@ -c $<
-		@echo "\t[ $(GREEN)✔$(NONE) ] $@ objet project_sanitize"
-
+	@echo "\n\[ $(BLUE)$(bold)===EXECUTING BINARY====$(NONE)]\n"		@echo "\t [ $(GREEN)✔$(NONE)] $@directories"
 $(SANITIZE) : $(OBJS_PATH_SANITIZE) $(OBJS_SANITIZE) $(LIBFT) $(HDRS)
 		@echo "\n [$(GREEN)$(bold)FSANITIZE COMPILATION$(NONE) ]"
 		@$(CC) $(CFLAGS) $(SANITIZE_FLAG) $(OBJS_SANITIZE) $(LIB_BINARY) -o $@
