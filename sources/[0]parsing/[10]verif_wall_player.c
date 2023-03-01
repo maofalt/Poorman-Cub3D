@@ -6,7 +6,7 @@
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:02:42 by yanthoma          #+#    #+#             */
-/*   Updated: 2023/03/01 19:58:15 by yanthoma         ###   ########.fr       */
+/*   Updated: 2023/03/01 23:39:23 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int check_wall(char **map)
         {
             if (map[y][x] == '0')
             {
-                if (!check_player(map[y][x -1]) && map[y][x -1]  > '1')
+				if (!check_player(map[y][x -1]) && map[y][x -1]  == '*')
                     return(0);
-                if (!check_player(map[y][x + 1]) && map[y][x + 1]  > '1')
+                if (!check_player(map[y][x + 1]) && map[y][x + 1]  == '*')
                     return(0);
-                if (!check_player(map[y + 1][x]) && map[y + 1][x] > '1')
+                if (!check_player(map[y + 1][x]) && map[y + 1][x] == '*')
                     return(0);
-                if (!check_player(map[y -1][x]) && map[y - 1][x]  > '1')
+                if (!check_player(map[y -1][x]) && map[y - 1][x]  == '*')
                     return(0);
             }
             x++;
