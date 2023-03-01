@@ -6,12 +6,11 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:03:30 by motero            #+#    #+#             */
-/*   Updated: 2023/02/24 17:28:55 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 03:02:26 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
 
 /**
 **while reading the file, we create a node for each line

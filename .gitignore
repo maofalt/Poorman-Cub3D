@@ -2,4 +2,4 @@
 cub3D
 *.d
 /obj
-
+/logs
