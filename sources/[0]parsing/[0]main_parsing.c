@@ -18,6 +18,8 @@ int	main_parsing(t_cub	*data, char *path)
 		return (0);
 	if (!parsing_text(data, path))
 		return (0);
+	if (!initialize_player(data))
+		return (0);
 	free_double_char(data->map);
 	return (1);
 }

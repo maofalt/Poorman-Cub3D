@@ -18,6 +18,7 @@
 # include "structures.h"
 # include "colors.h"
 # include "cub3D.h"
+# include "maths.h"
 
 /*############################################################################*/
 /*                              BUTTONS DEFINITION                            */
@@ -50,6 +51,10 @@
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+
+# ifndef FOV
+#  define FOV 90
+# endif
 
 /*############################################################################*/
 /*                              MLX_ENGINE FUNCTIONS                          */

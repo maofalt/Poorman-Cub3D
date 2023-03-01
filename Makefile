@@ -16,7 +16,7 @@ NAME = cub3D
 #                                 HEADERS                                     #
 #=============================================================================#
 
-HDR_NAME = cub3D.h parsing.h structures.h mlx.h mlx_int.h mlx_engine.h colors.h
+HDR_NAME = cub3D.h parsing.h structures.h mlx.h mlx_int.h mlx_engine.h colors.h maths.h
 HDR_DIR = includes/
 HDRS = $(addprefix $(HDR_DIR), $(HDR_NAME))
 HDR_INC = -I includes -I libft/includes -I minilibx-linux/

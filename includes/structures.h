@@ -56,6 +56,13 @@ typedef int				t_vector_i __attribute__((vector_size (8)));
 ** a uint_32_t for the color of the ceiling
 */
 
+typedef struct s_player
+{
+	t_vector_f	pos;
+	t_vector_f	dir;
+	t_vector_f	plane;
+}				t_player;
+
 typedef struct s_cub
 {
 	uint32_t	floor;
@@ -63,7 +70,7 @@ typedef struct s_cub
 	size_t		mapwidth;
 	size_t		mapheight;
 	char		**map;
-	t_vector_f	player_pos;
+	t_player	player;
 	t_img_data	texture[4];
 	void		*mlx_ptr;
 	void		*win_ptr;
