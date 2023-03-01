@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   [0]main_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:30:35 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:30:19 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/01 23:50:56 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	main_parsing(t_cub	*data, char *path)
 		return (0);
 	if (!parsing_text(data, path))
 		return (0);
-	print_map(data->map);
+	if (!check_wall(data->map))
+	 	return(printf("nein\n"), 1);
+	if (!get_player_pos(data->map))
+		return (printf("more tha one or none nigga\n"), 1);
 	free_double_char(data->map);
 	return (1);
 }

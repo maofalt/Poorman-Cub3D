@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:31:11 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:32:14 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/01 23:46:24 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,10 @@ int		parse_map(char	*line, char ***map, int fd);
 int		check_map(char ***map);
 int		check_valid_map_characters(char **map);
 int		valid_characters_map(char c);
+int		get_player_pos(char **map);
 int		check_valid_map_no_split(char **map);
 int		line_is_empty(char *line);
+int		check_wall(char **map);
 void	print_map(char **map);
 
 /*############################################################################*/
