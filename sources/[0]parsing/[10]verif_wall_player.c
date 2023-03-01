@@ -6,7 +6,7 @@
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:02:42 by yanthoma          #+#    #+#             */
-/*   Updated: 2023/02/26 18:39:55 by yanthoma         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:58:15 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ to decode the parameter from get_player_pos:
 *x = pos & 0xFFFF; 
 */
 
+int check_player(char c)
+{
+    return(c == 'N' || c == 'W' || c == 'E' || c == 'S');
+}
+
 int check_wall(char **map)
 {
     int x;
@@ -32,17 +37,22 @@ int check_wall(char **map)
         x = 0;
         while(map[y][x])
         {
-            if (map[y][x] == '0' && (map[y -1][x] - '0') + (map[y][x -1] - '0') + (map[y + 1][x]- '0') + (map[y][x + 1]- '0') > 4)
-                return (0);
+            if (map[y][x] == '0')
+            {
+                if (!check_player(map[y][x -1]) && map[y][x -1]  > '1')
+                    return(0);
+                if (!check_player(map[y][x + 1]) && map[y][x + 1]  > '1')
+                    return(0);
+                if (!check_player(map[y + 1][x]) && map[y + 1][x] > '1')
+                    return(0);
+                if (!check_player(map[y -1][x]) && map[y - 1][x]  > '1')
+                    return(0);
+            }
             x++;
-        }
+        }   
         y++;
     }
     return (1);
-}
-int check_player(char c)
-{
-    return(c == 'N' || c == 'W' || c == 'E' || c == 'S');
 }
 
 int	get_player_pos(char **map)
