@@ -16,12 +16,12 @@
 **event has modified underlying constants*/
 int	ft_render(t_cub *data)
 {
-	//printf("inside ft_render\n");
 	if (data->win_ptr == NULL)
 		return (1);
+	data->update = 1;
 	if (data->update)
 	{
-		//ft_render_fractal(data);
+		draw_celling_floor(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->screen.mlx_img, 0, 0);
 		data->update = 0;

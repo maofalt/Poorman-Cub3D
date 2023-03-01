@@ -19,6 +19,7 @@
 
 # include "mlx.h"
 # include "mlx_int.h"
+# include "mlx_engine.h"
 # include <stdlib.h>
 # include <stdint.h>
 # include "structures.h"
