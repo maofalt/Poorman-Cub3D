@@ -6,7 +6,7 @@
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:02:42 by yanthoma          #+#    #+#             */
-/*   Updated: 2023/03/01 23:39:23 by yanthoma         ###   ########.fr       */
+/*   Updated: 2023/03/01 23:50:43 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int	get_player_pos(char **map)
     }
     if (player == 1)
         return (pos);
-    return (0);
+	else
+    	return (0);
 }
