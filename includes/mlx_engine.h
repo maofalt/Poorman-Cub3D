@@ -17,6 +17,8 @@
 # include "mlx_int.h"
 # include "structures.h"
 # include "colors.h"
+# include "cub3D.h"
+
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080

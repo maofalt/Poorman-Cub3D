@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:28:44 by motero            #+#    #+#             */
-/*   Updated: 2023/02/23 15:59:06 by motero           ###   ########.fr       */
+/*   Updated: 2023/02/27 02:32:51 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_texture_elements(char **tmp, char **textures, int *mask)
 {
-	if (!tmp[0] || tmp[1] == NULL || tmp[2] != 0)
+	if (!tmp[0] || tmp[1] == NULL || tmp[1][0] == '\n' || tmp[2] != 0)
 		return (0);
 	if (ft_strncmp(tmp[0], "NO", 3) == 0)
 	{
