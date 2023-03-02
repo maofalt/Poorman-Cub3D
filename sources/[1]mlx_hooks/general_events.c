@@ -41,8 +41,9 @@ int	ft_handle_boutonpress(int buttonsym, int x, int y, t_cub *data)
 int	ft_handle_keypress(int keysym, t_cub *data)
 {
 	ft_destroy_window_button(keysym, data);
-	if (keysym == UP_KEY || keysym == DOWN_KEY || keysym == RIGHT_KEY
-		|| keysym == LEFT_KEY)
+	  printf("key pressed: %d\n", keysym);
+	if (keysym == Z_KEY || keysym == Q_KEY || keysym == S_KEY
+		|| keysym == D_KEY)
 		ft_movements_keys(keysym, data);
 	ft_keyboard_press(keysym, data);
 	data->update = 1;

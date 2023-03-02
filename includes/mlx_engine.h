@@ -43,10 +43,9 @@
 # define BRACE_R_KEY 93
 # define D_KEY 100
 # define C_KEY 99
-# define X_KEY 122
-# define Z_KEY 120
+# define Z_KEY 122
 # define Q_KEY 113
-# define S_KEY 100
+# define S_KEY 115
 # define A_KEY 97
 
 

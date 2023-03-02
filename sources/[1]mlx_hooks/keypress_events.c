@@ -25,28 +25,61 @@ void	ft_destroy_window_button(int keysym, t_cub *data)
 	/* Events catching movements and moving into the fractal window*/
 void	ft_movements_keys(int keysym, t_cub *data)
 {
-    (void)keysym;
-    (void)data;
-    printf("button pressend id %d\n", keysym);
-    if (keysym == UP_KEY || keysym == RIGHT_KEY)
-        printf("UP or RIGHT pressed\n");
-    if (keysym == UP_KEY || keysym == DOWN_KEY)
-        printf("UP or DOWN pressed\n");
-    else if (keysym == RIGHT_KEY || keysym == LEFT_KEY)
-        printf("RIGHT or LEFT pressed\n");
+    t_dda           dda;
+    t_player        player;
+    const float     move_speed = 0.35;
+
+    dda = data->dda;
+    player = data->player;
+    if (data->update)
+        return ;
+    printf("key pressed: %d\n", keysym);
+    if (keysym == Z_KEY)
+    {
+        if(data->map[(int)(dda.pos[0] + player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
+            data->player.pos[0] += player.dir[0] * move_speed;
+        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] + player.dir[1] * move_speed)] != '1')
+            data->player.pos[1] += player.dir[1] * move_speed;
+    }
+    else if (keysym == S_KEY)
+    {
+        if(data->map[(int)(dda.pos[0] - player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
+            data->player.pos[0] -= player.dir[0] * move_speed;
+        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.dir[1] * move_speed)] != '1')
+            data->player.pos[1] -= player.dir[1] * move_speed;
+    }
+    else if (keysym == Q_KEY)
+    {
+        //moveto the left  if no wall at the left
+        if(data->map[(int)(dda.pos[0] - player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
+            data->player.pos[0] -= player.plane[0] * move_speed;
+        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.plane[1] * move_speed)] != '1')
+            data->player.pos[1] -= player.plane[1] * move_speed;
+    }
+    else if (keysym == D_KEY)
+    {
+        //moveto the right  if no wall at the right
+        if(data->map[(int)(dda.pos[0] + player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
+            data->player.pos[0] += player.plane[0] * move_speed;
+        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] + player.plane[1] * move_speed)] != '1')
+            data->player.pos[1] += player.plane[1] * move_speed;
+    }
+    data->update = 1;
 }
 
+
+/*
+** If the up arrow is pressed, the player will move forward: add dirX to posX, 
+** and dirY to posY. This assumes that dirX and dirY are normalized vectors 
+** (their length is 1), but they were initially set like this, so it's ok. 
+** There's also a simple collision detection built in, namely if the new position 
+** will be inside a wall, you won't move. This collision detection can be improved however,
+** for example by checking if a circle around the player won't go inside the wall instead 
+**of just a single point.
+** The same is done if you press the down arrow, but then the direction is subtracted instead.
+*/
 void	ft_keyboard_press(int keysym, t_cub *data)
 {
-    (void)keysym;
     (void)data;
-    printf("button pressend id %d\n", keysym);
-    if (keysym == Z_KEY)
-        printf("Z pressed\n");
-    else if (keysym == Z_KEY)
-        printf("S pressed\n");
-    else if (keysym == Z_KEY)
-        printf("Q pressed\n");
-    else if (keysym == D_KEY)
-        printf("D pressed\n");
+    (void)keysym;
 }

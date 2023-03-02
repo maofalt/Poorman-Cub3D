@@ -28,6 +28,7 @@ void	free_everything(t_cub data)
 	mlx_destroy_image(data.mlx_ptr, data.screen.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
+	free_double_char(data.map);
 }
 
 int	main(int argc, char **argv)

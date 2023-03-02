@@ -52,9 +52,9 @@ void	calculate_ray_angle(t_cub *data)
 	dda = &(data->dda);
 	x = 0;
 	dda->pos = data->player.pos;
-	printf("player pos: %f, %f\n", dda->pos[0], dda->pos[1]);
-	printf("player dir: %f, %f\n", data->player.dir[0], data->player.dir[1]);
-	printf("player plane: %f, %f\n---------------------\n", data->player.plane[0], data->player.plane[1]);
+	// printf("player pos: %f, %f\n", dda->pos[0], dda->pos[1]);
+	// printf("player dir: %f, %f\n", data->player.dir[0], data->player.dir[1]);
+	// printf("player plane: %f, %f\n---------------------\n", data->player.plane[0], data->player.plane[1]);
 	while (x < WINDOW_WIDTH)
 	{
 		dda->hit = 0;
@@ -62,7 +62,7 @@ void	calculate_ray_angle(t_cub *data)
 		dda->rayDir[0] = data->player.dir[0] + data->player.plane[0] * cameraX;
 		dda->rayDir[1] = data->player.dir[1] + data->player.plane[1] * cameraX;
 		//which box of the map we're in
-		dda->map = (t_vector_i){(int)data->player.pos[0], (int)data->player.pos[1]};
+		dda->map = (t_vector_i){(int)dda->pos[0], (int)dda->pos[1]};
 		//printf("map: %d, %d\n", dda->map[0], dda->map[1]);
 		calculate_length_ray(dda);
 		//printf("before sideDist[0] = %f, sideDist[1] = %f\n", dda->sideDist[0], dda->sideDist[1]);
@@ -73,7 +73,7 @@ void	calculate_ray_angle(t_cub *data)
 		calculate_line_height(data);
 		chose_color_wall(data);
 		y = dda->drawStart;
-		printf("drawStart: %d, drawEnd: %d\n===========\n", dda->drawStart, dda->drawEnd);
+	//	printf("drawStart: %d, drawEnd: %d\n===========\n", dda->drawStart, dda->drawEnd);
 		while (y <= dda->drawEnd)
 		{
 			img_pix_put(&((*data).screen), x, y, dda->color);
@@ -96,7 +96,7 @@ void	calculate_length_ray(t_dda *dda)
 		dda->deltaDist[1] = 1e30;
 	else
 		dda->deltaDist[1] = fabs(1 / dda->rayDir[1]);
-	printf("deltaDist[0] = %f, deltaDist[1] = %f\n", dda->deltaDist[0], dda->deltaDist[1]);
+	//printf("deltaDist[0] = %f, deltaDist[1] = %f\n", dda->deltaDist[0], dda->deltaDist[1]);
 }
 
 /*
@@ -153,7 +153,7 @@ void	perform_dda(t_cub *data)
 		//printf("map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
 		if (data->map[dda->map[0]][dda->map[1]] == '1')
 		{
-			printf("hit  at map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
+		//	printf("hit  at map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
 			dda->hit = 1;
 		}
 	}
@@ -172,26 +172,26 @@ void	calculate_distance_projection(t_cub *data)
 		dda->perpWallDist = (dda->sideDist[0] - dda->deltaDist[0]);
 	else
 		dda->perpWallDist = (dda->sideDist[1] - dda->deltaDist[1]);
-	printf("perpWallDist = %f\n", dda->perpWallDist);
+	//printf("perpWallDist = %f\n", dda->perpWallDist);
 }
 
 void	calculate_line_height(t_cub *data)
 {
 	t_dda	*dda;
 
-	printf("----calculate line height------\n");
+	//printf("----calculate line height------\n");
 	dda = &(data->dda);
 	dda->lineHeight = (int)(WINDOW_HEIGHT / dda->perpWallDist);
-	printf("lineHeight = %d\n", dda->lineHeight);
+	//printf("lineHeight = %d\n", dda->lineHeight);
 	dda->drawStart = -dda->lineHeight / 2 + WINDOW_HEIGHT / 2;
 	if (dda->drawStart < 0)
 		dda->drawStart = 0;
-	printf("drawStart = %d\n", dda->drawStart);
+	//printf("drawStart = %d\n", dda->drawStart);
 	dda->drawEnd = dda->lineHeight / 2 + WINDOW_HEIGHT / 2;
 	if (dda->drawEnd >= WINDOW_HEIGHT)
 		dda->drawEnd = WINDOW_HEIGHT - 1;
-	printf("drawEnd = %d\n", dda->drawEnd);
-	printf("----end calculate line height------\n");
+	// printf("drawEnd = %d\n", dda->drawEnd);
+	// printf("----end calculate line height------\n");
 }
 
 void	chose_color_wall(t_cub *data)

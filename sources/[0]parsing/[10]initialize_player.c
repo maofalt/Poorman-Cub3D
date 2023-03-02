@@ -24,6 +24,7 @@ int initialize_player(t_cub *data)
     initialize_player_pos(data);
     initialize_player_dir(data);
     initialize_player_plane(data);
+    data->dda.pos = data->player.pos;
     return (1);
 }
 
