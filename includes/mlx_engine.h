@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:41:27 by motero            #+#    #+#             */
-/*   Updated: 2023/02/22 23:18:03 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:25:04 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define Q_KEY 113
 # define S_KEY 115
 # define A_KEY 97
-
+# define W_KEY 119
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
@@ -67,18 +67,18 @@ void	draw_celling_floor(t_cub *data);
 /*                              MLX_ENGINE FUNCTIONS                          */
 /*############################################################################*/
 
-int	    ft_mlx_initialize_pointers(t_cub *data);
-int	    ft_mlx_create_window_and_image(t_cub *data);
+int		ft_mlx_initialize_pointers(t_cub *data);
+int		ft_mlx_create_window_and_image(t_cub *data);
 
 /*############################################################################*/
 /*                              MLX_ENGINE HOOKS                          */
 /*############################################################################*/
 
 void	ft_mlx_engine(t_cub *data);
-int	    ft_handle_boutonpress(int buttonsym, int x, int y, t_cub *data);
-int	    ft_handle_keyrelease(int keysym, t_cub *data);
-int	    ft_destroy_window(t_cub *data);
-int 	ft_handle_keypress(int keysym, t_cub *data);
+int		ft_handle_boutonpress(int buttonsym, int x, int y, t_cub *data);
+int		ft_handle_keyrelease(int keysym, t_cub *data);
+int		ft_destroy_window(t_cub *data);
+int		ft_handle_keypress(int keysym, t_cub *data);
 
 /*############################################################################*/
 /*                              KEYPRESS EVENTS                               */

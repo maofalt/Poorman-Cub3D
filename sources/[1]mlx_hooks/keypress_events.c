@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_main.c                                         :+:      :+:    :+:   */
+/*   keypress_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:25:30 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:23:55 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_movements_keys(int keysym, t_cub *data)
     if (data->update)
         return ;
     printf("key pressed: %d\n", keysym);
-    if (keysym == Z_KEY)
+    if (keysym == W_KEY)
     {
         if(data->map[(int)(dda.pos[0] + player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
             data->player.pos[0] += player.dir[0] * move_speed;
@@ -48,7 +48,7 @@ void	ft_movements_keys(int keysym, t_cub *data)
         if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.dir[1] * move_speed)] != '1')
             data->player.pos[1] -= player.dir[1] * move_speed;
     }
-    else if (keysym == Q_KEY)
+    else if (keysym == A_KEY)
     {
         //moveto the left  if no wall at the left
         if(data->map[(int)(dda.pos[0] - player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
