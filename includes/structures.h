@@ -63,19 +63,37 @@ typedef struct s_player
 	t_vector_f	plane;
 }				t_player;
 
+typedef struct s_dda
+{
+	t_vector_f	rayDir;
+	t_vector_f	sideDist;
+	t_vector_f	deltaDist;
+	t_vector_i	map;
+	t_vector_f	pos;
+	t_vector_i	step;
+	uint32_t	color;
+	double		perpWallDist;
+	int			lineHeight;
+	int			drawStart;
+	int			drawEnd;
+	int			hit;
+	int			side;
+}				t_dda;
+
 typedef struct s_cub
 {
+	t_img_data	texture[4];
+	t_img_data	screen;
 	uint32_t	floor;
 	uint32_t	celling;
+	t_player	player;
+	t_dda		dda;
 	size_t		mapwidth;
 	size_t		mapheight;
-	char		**map;
-	t_player	player;
-	t_img_data	texture[4];
+	t_img		img;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	t_img		img;
-	t_img_data	screen;
+	char		**map;
 	int			update;
 }				t_cub;
 

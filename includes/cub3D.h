@@ -22,7 +22,7 @@
 # include "mlx_int.h"
 # include "colors.h"
 # include "raycasting.h"
-# include "maths.h"
+# include <math.h>
 
 # ifndef FOV
 #  define FOV 60

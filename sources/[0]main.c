@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 	ft_mlx_initialize_pointers(&data);
 	if (data.mlx_ptr == NULL)
 		return (1);
+	data.update = 1;
 	if (!main_parsing(&data, argv[1]))
 		return (free_everything(data), 1);
 	printf("main_parsing done\n");

@@ -23,11 +23,19 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include "structures.h"
-# include "maths.h"
+# include "my_maths.h"
+# include <math.h>
 
 /*############################################################################*/
 /*                          RAYCASTINGFUNCTIONS                               */
 /*############################################################################*/
-int	ft_render(t_cub*data);
+int	    ft_render(t_cub *data);
+void	calculate_ray_angle(t_cub *data);
+void	calculate_length_ray(t_dda *dda);
+void	calculate_step_sideDist(t_dda *dda);
+void	perform_dda(t_cub *data);
+void	calculate_distance_projection(t_cub *data);
+void	calculate_line_height(t_cub *data);
+void	chose_color_wall(t_cub *data);
 
 #endif

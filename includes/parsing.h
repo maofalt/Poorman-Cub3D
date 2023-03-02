@@ -21,9 +21,11 @@
 # include "colors.h"
 # include "mlx_int.h"
 # include "mlx_engine.h"
-# include "maths.h"
+# include "my_maths.h"
 # include "raycasting.h"
 # include <mlx.h>
+# include <math.h>
+
 
 # include <wchar.h>
 # include <uchar.h>
@@ -36,7 +38,7 @@
 int		main_parsing(t_cub	*data, char *path);
 int		initialize_double_char(char **array, int size);
 int		nbr_commas(char *str);
-void		print_error(char *message);
+void	print_error(char *message);
 
 /*############################################################################*/
 /*                              CHECK VALID FILE                              */

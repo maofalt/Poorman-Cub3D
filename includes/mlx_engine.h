@@ -18,7 +18,8 @@
 # include "structures.h"
 # include "colors.h"
 # include "cub3D.h"
-# include "maths.h"
+# include "my_maths.h"
+# include <math.h>
 
 /*############################################################################*/
 /*                              BUTTONS DEFINITION                            */

@@ -92,11 +92,13 @@ void    initialize_player_dir(t_cub *data)
 */
 void    initialize_player_plane(t_cub *data)
 {
-    float    fov_radians;
-    float    plane_length;
+    // float    fov_radians;
+    // float    plane_length;
 
-    fov_radians = FOV * M_PI / 180.0;
-    plane_length = 2 * tan(fov_radians / 2);
-    data->player.plane[0] =  -data->player.dir[1] * plane_length;
-    data->player.plane[1] =  data->player.dir[0] * plane_length;
+    // fov_radians = FOV * M_PI / 180.0;
+    // plane_length = 2 * tan(fov_radians / 2);
+    // data->player.plane[0] =  -data->player.dir[1] * plane_length;
+    // data->player.plane[1] =  data->player.dir[0] * plane_length;
+    data->player.plane[0] =  0;
+    data->player.plane[1] =  0.66;
 }
