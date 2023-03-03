@@ -6,7 +6,7 @@
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:02:42 by yanthoma          #+#    #+#             */
-/*   Updated: 2023/03/02 00:04:02 by yanthoma         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:57:06 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_wall(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '0')
+			if (map[y][x] == '0' || check_player(map[y][x]))
 			{
 				if (!check_player(map[y][x -1]) && map[y][x -1] == '*')
 					return (0);
