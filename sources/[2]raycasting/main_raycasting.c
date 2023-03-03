@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 23:24:48 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:42:23 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_render(t_cub *data)
 ** ie each column of the screen
 ** and store it in the ray_angle array
 ** The ray start at the player position
-** cameraX is the x coordinate on the camera plane th that current x-coordinate
+** camera_x is the x coordinate on the camera plane th that current x-coordinate
 ** of the screen represents (this way the right side of the screen is 1 and the
 ** the center is 0, the left side is -1)
 ** The direction ray can be calculated as the sum of direction vector and a port 
@@ -45,7 +45,7 @@ int	ft_render(t_cub *data)
 void	calculate_ray_angle(t_cub *data)
 {
 	int			x;
-	double		cameraX;
+	double		camera_x;
 	t_dda		*dda;
 
 	dda = &(data->dda);
@@ -54,9 +54,9 @@ void	calculate_ray_angle(t_cub *data)
 	while (x < WINDOW_WIDTH)
 	{
 		dda->hit = 0;
-		cameraX = 2 * x / (double)WINDOW_WIDTH - 1;
-		dda->rayDir[0] = data->player.dir[0] + data->player.plane[0] * cameraX;
-		dda->rayDir[1] = data->player.dir[1] + data->player.plane[1] * cameraX;
+		camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
+		dda->rayDir[0] = data->player.dir[0] + data->player.plane[0] * camera_x;
+		dda->rayDir[1] = data->player.dir[1] + data->player.plane[1] * camera_x;
 		dda->map = (t_vector_i){(int)dda->pos[0], (int)dda->pos[1]};
 		calculate_length_ray(dda);
 		calculate_step_sideDist(dda);
@@ -77,7 +77,6 @@ void	calculate_length_ray(t_dda *dda)
 		dda->deltaDist[0] = 1e30;
 	else
 		dda->deltaDist[0] = fabs(1 / dda->rayDir[0]);
-	
 	if (dda->rayDir[1] == 0)
 		dda->deltaDist[1] = 1e30;
 	else

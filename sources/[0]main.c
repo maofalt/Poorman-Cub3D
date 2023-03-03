@@ -6,14 +6,14 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:11:18 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 23:34:49 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:40:20 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 void	free_everything(t_cub data)
-{W
+{
 	if (data.win_ptr != NULL)
 		mlx_destroy_window(data.mlx_ptr, data.win_ptr);
 	data.win_ptr = NULL;

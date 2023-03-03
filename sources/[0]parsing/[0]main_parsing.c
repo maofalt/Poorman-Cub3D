@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:30:35 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 23:25:37 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:54:42 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main_parsing(t_cub	*data, char *path)
 	if (!parsing_text(data, path))
 		return (0);
 	if (!check_wall(data->map))
-		return (printf("nein\n"), 1);
+		return (printf("nein\n"), 0);
 	if (!get_player_pos(data->map))
-		return (printf("more tha one or none nigga\n"), 1);
+		return (printf("more tha one or none nigga\n"), 0);
 	if (!initialize_player(data))
 		return (0);
 	return (1);
