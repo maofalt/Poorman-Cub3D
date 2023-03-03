@@ -1,0 +1,12 @@
+NO                                   ./assets/textures/BRICK_2A.xpm
+SO     ./assets/textures/BRICK_2A.xpm
+WE                textures/simple_tiles.xpm
+EA textures/simple_tiles.xpm
+
+F                           0,100,0
+C 1,0,255
+
+111111111111
+111111100001
+    1111N111
+    11111111
