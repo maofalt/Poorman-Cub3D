@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 21:00:15 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:03:59 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	perform_dda(t_cub *data)
 			dda->map[1] += dda->step[1];
 			dda->side = 1;
 		}
-		printf("map[0] = %d, map[1] = %d\n", dda->map[0], dda->map[1]);
+		//printf("map[0] = %d, map[1] = %d\n", dda->map[0], dda->map[1]);
 		//printf("map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
 		if (data->map[dda->map[0]][dda->map[1]] == '1')
 		{
@@ -277,25 +277,36 @@ int	determine_wall_x_hit(t_cub *data, int tex_num)
 void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 {
 	const float	step = \
-	1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
+	 1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
+	//const float	step = 1;
 	float		tex_pos;
 	t_dda		*dda;
 	int			y;
+	int			pixel;
+	t_img_data	*img;
 
-	printf("----Copy coresponding pixel----\n");
-	printf("step = %f\n", step);
+	img = (&data->texture[tex_num]);
+	//printf("----Copy coresponding pixel----\n");
+	//if (tex_num == 2) printf("step = %f\n", step);
 	dda = &(data->dda);
 	tex_pos = (dda->drawStart - WINDOW_HEIGHT / 2 + dda->lineHeight / 2) * step;
-	printf("tex_pos = %f\n", tex_pos);
+	//if (tex_num == 2) printf("tex_pos = %f\n", tex_pos);
 	y = dda->drawStart;
-	printf("y = %d\n", y);
+	//if (tex_num == 2) printf("y = %d\n", y);
+	(void)tex_x;
+	(void)pixel;
+	dda->tex_y = (int)tex_pos & (data->texture[tex_num].size[0] - 1);
 	while (y < dda->drawEnd)
 	{
-		dda->tex_y = (int)tex_pos & (data->texture[tex_num].size[1] - 1);
-		//printf("tex_y = %d\n", dda->tex_y);
+		dda->tex_y = (int)tex_pos;
+		//if (tex_num == 2) printf("tex_y = %d\n", dda->tex_y);
 		tex_pos += step;
-		//printf("tex_pos = %f\n", tex_pos);
-		dda->color = data->texture[tex_num].addr[data->texture[tex_num].size[1] * dda->tex_y + tex_x];
+		//if (tex_num == 2) printf("tex_pos = %f\n", tex_pos);
+		//pixel = img->addr + (y * img->line_len + dda->x * (img->bpp / 8));
+		//dda->color = *(unsigned int *)pixel;
+		int addon = dda->tex_y * img->line_len + tex_x * 4;
+		pixel = *(unsigned int *)(data->texture[tex_num].addr + addon);
+		dda->color = pixel;
 		img_pix_put(&((*data).screen), dda->x, y, dda->color);
 		y++;
 	}
