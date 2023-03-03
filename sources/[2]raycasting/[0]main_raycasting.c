@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:16:19 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:23:59 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_render(t_cub *data)
 void	calculate_ray_angle(t_cub *data)
 {
 	int			x;
-	double		camera_x;
+	double		cam_x;
 	t_dda		*dda;
 
 	dda = &(data->dda);
@@ -54,9 +54,9 @@ void	calculate_ray_angle(t_cub *data)
 	while (x < WINDOW_WIDTH)
 	{
 		dda->hit = 0;
-		camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
-		dda->ray_dir[0] = data->player.dir[0] + data->player.plane[0] * camera_x;
-		dda->ray_dir[1] = data->player.dir[1] + data->player.plane[1] * camera_x;
+		cam_x = 2 * x / (double)WINDOW_WIDTH - 1;
+		dda->ray_dir[0] = data->player.dir[0] + data->player.plane[0] * cam_x;
+		dda->ray_dir[1] = data->player.dir[1] + data->player.plane[1] * cam_x;
 		dda->map = (t_vector_i){(int)dda->pos[0], (int)dda->pos[1]};
 		calculate_length_ray(dda);
 		calculate_step_side_dist(dda);
