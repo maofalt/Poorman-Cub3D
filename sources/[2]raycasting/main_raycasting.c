@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 23:42:23 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:57:55 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	calculate_length_ray(t_dda *dda)
 /*
 ** caclulate the step and initial sideDist
 */
-void	calculate_step_sideDist(t_dda *dda)
+void	calculate_step_side_dist(t_dda *dda)
 {
 	if (dda->rayDir[0] < 0)
 	{
@@ -96,7 +96,8 @@ void	calculate_step_sideDist(t_dda *dda)
 	else
 	{
 		dda->step[0] = 1;
-		dda->sideDist[0] = (dda->map[0] + 1.0 - dda->pos[0]) * dda->deltaDist[0];
+		dda->sideDist[0] = (dda->map[0] + 1.0
+				- dda->pos[0]) * dda->deltaDist[0];
 	}
 	if (dda->rayDir[1] < 0)
 	{
@@ -106,7 +107,8 @@ void	calculate_step_sideDist(t_dda *dda)
 	else
 	{
 		dda->step[1] = 1;
-		dda->sideDist[1] = (dda->map[1] + 1.0 - dda->pos[1]) * dda->deltaDist[1];
+		dda->sideDist[1] = (dda->map[1] + 1.0
+				- dda->pos[1]) * dda->deltaDist[1];
 	}
 }
 
