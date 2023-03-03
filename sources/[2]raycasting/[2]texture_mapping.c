@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:08:09 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:14:27 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int	determine_wall_x_hit(t_cub *data, int tex_num)
 void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 {
 	const float	step = \
-	 1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
-	float		tex_pos;
+	1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
 	t_dda		*dda;
 	int			y;
 	int			pixel;
@@ -90,17 +89,27 @@ void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 
 	img = (&data->texture[tex_num]);
 	dda = &(data->dda);
-	tex_pos = (dda->drawStart - WINDOW_HEIGHT / 2 + dda->lineHeight / 2) * step;
+	dda->tex_pos = (dda->drawStart - WINDOW_HEIGHT / 2
+			+ dda->lineHeight / 2) * step;
 	y = dda->drawStart;
-	dda->tex_y = (int)tex_pos & (data->texture[tex_num].size[0] - 1);
+	dda->tex_y = (int)dda->tex_pos & (data->texture[tex_num].size[0] - 1);
 	while (y < dda->drawEnd)
 	{
-		dda->tex_y = (int)tex_pos;
-		tex_pos += step;
-		int addon = dda->tex_y * img->line_len + tex_x * 4;
-		pixel = *(unsigned int *)(data->texture[tex_num].addr + addon);
+		dda->tex_y = (int)dda->tex_pos;
+		dda->tex_pos += step;
+		pixel = get_pixel(data, tex_num, tex_x);
 		dda->color = pixel;
 		img_pix_put(&((*data).screen), dda->x, y, dda->color);
 		y++;
 	}
+}
+
+int	get_pixel(t_cub *data, int tex_num, int tex_x)
+{
+	int			addon;
+	t_img_data	*img;
+
+	img = (&data->texture[tex_num]);
+	addon = data->dda.tex_y * img->line_len + tex_x * 4;
+	return (*(unsigned int *)(data->texture[tex_num].addr + addon));
 }

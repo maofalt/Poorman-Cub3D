@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 03:24:57 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 20:42:39 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:11:22 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_img_data
 	t_vector_i	size;
 }	t_img_data;
 
-
 /* Parsing structure for CUB3D stocking information from .cub file
 ** a wolrd map in a 2D int array of MAPWIDTH * MAPHEIGHT
 ** a array  of size 4 of sprites using t_image from the mlx
@@ -74,7 +73,8 @@ typedef struct s_dda
 	t_vector_f	pos;
 	t_vector_i	step;
 	uint32_t	color;
-	double		perpWallDist;
+	float		perpWallDist;
+	float		tex_pos;
 	int			lineHeight;
 	int			drawStart;
 	int			drawEnd;
@@ -82,6 +82,7 @@ typedef struct s_dda
 	int			side;
 	int			tex_y;
 	int			x;
+	
 }				t_dda;
 
 typedef struct s_cub
