@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 23:57:55 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:02:23 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	calculate_ray_angle(t_cub *data)
 		dda->rayDir[1] = data->player.dir[1] + data->player.plane[1] * camera_x;
 		dda->map = (t_vector_i){(int)dda->pos[0], (int)dda->pos[1]};
 		calculate_length_ray(dda);
-		calculate_step_sideDist(dda);
+		calculate_step_side_dist(dda);
 		perform_dda(data);
 		calculate_distance_projection(data);
 		calculate_line_height(data);
