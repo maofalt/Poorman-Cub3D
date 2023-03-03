@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 23:03:59 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:24:48 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,8 @@ void	calculate_ray_angle(t_cub *data)
 		perform_dda(data);
 		calculate_distance_projection(data);
 		calculate_line_height(data);
-		//chose_color_wall(data);
 		dda->x = x;
 		texturise_wall(data);
-		// y = dda->drawStart;
-		// while (y <= dda->drawEnd)
-		// {
-		// 	img_pix_put(&((*data).screen), x, y, dda->color);
-		// 	y++;
-		// }
 		x++;
 	}
 	data->update = 0;
@@ -89,7 +82,6 @@ void	calculate_length_ray(t_dda *dda)
 		dda->deltaDist[1] = 1e30;
 	else
 		dda->deltaDist[1] = fabs(1 / dda->rayDir[1]);
-	//printf("deltaDist[0] = %f, deltaDist[1] = %f\n", dda->deltaDist[0], dda->deltaDist[1]);
 }
 
 /*
@@ -129,7 +121,6 @@ void	perform_dda(t_cub *data)
 	dda = &(data->dda);
 	while (dda->hit == 0)
 	{
-		//printf("sideDist[0] = %f, sideDist[1] = %f\n", dda->sideDist[0], dda->sideDist[1]);
 		if (dda->sideDist[0] < dda->sideDist[1])
 		{
 			dda->sideDist[0] += dda->deltaDist[0];
@@ -142,13 +133,8 @@ void	perform_dda(t_cub *data)
 			dda->map[1] += dda->step[1];
 			dda->side = 1;
 		}
-		//printf("map[0] = %d, map[1] = %d\n", dda->map[0], dda->map[1]);
-		//printf("map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
 		if (data->map[dda->map[0]][dda->map[1]] == '1')
-		{
-		//	printf("hit  at map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
 			dda->hit = 1;
-		}
 	}
 }
 
@@ -165,26 +151,20 @@ void	calculate_distance_projection(t_cub *data)
 		dda->perpWallDist = (dda->sideDist[0] - dda->deltaDist[0]);
 	else
 		dda->perpWallDist = (dda->sideDist[1] - dda->deltaDist[1]);
-	//printf("perpWallDist = %f\n", dda->perpWallDist);
 }
 
 void	calculate_line_height(t_cub *data)
 {
 	t_dda	*dda;
 
-	//printf("----calculate line height------\n");
 	dda = &(data->dda);
 	dda->lineHeight = (int)(WINDOW_HEIGHT / dda->perpWallDist);
-	//printf("lineHeight = %d\n", dda->lineHeight);
 	dda->drawStart = -dda->lineHeight / 2 + WINDOW_HEIGHT / 2;
 	if (dda->drawStart < 0)
 		dda->drawStart = 0;
-	//printf("drawStart = %d\n", dda->drawStart);
 	dda->drawEnd = dda->lineHeight / 2 + WINDOW_HEIGHT / 2;
 	if (dda->drawEnd >= WINDOW_HEIGHT)
 		dda->drawEnd = WINDOW_HEIGHT - 1;
-	// printf("drawEnd = %d\n", dda->drawEnd);
-	// printf("----end calculate line height------\n");
 }
 
 void	chose_color_wall(t_cub *data)
@@ -278,7 +258,6 @@ void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 {
 	const float	step = \
 	 1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
-	//const float	step = 1;
 	float		tex_pos;
 	t_dda		*dda;
 	int			y;
@@ -286,24 +265,14 @@ void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 	t_img_data	*img;
 
 	img = (&data->texture[tex_num]);
-	//printf("----Copy coresponding pixel----\n");
-	//if (tex_num == 2) printf("step = %f\n", step);
 	dda = &(data->dda);
 	tex_pos = (dda->drawStart - WINDOW_HEIGHT / 2 + dda->lineHeight / 2) * step;
-	//if (tex_num == 2) printf("tex_pos = %f\n", tex_pos);
 	y = dda->drawStart;
-	//if (tex_num == 2) printf("y = %d\n", y);
-	(void)tex_x;
-	(void)pixel;
 	dda->tex_y = (int)tex_pos & (data->texture[tex_num].size[0] - 1);
 	while (y < dda->drawEnd)
 	{
 		dda->tex_y = (int)tex_pos;
-		//if (tex_num == 2) printf("tex_y = %d\n", dda->tex_y);
 		tex_pos += step;
-		//if (tex_num == 2) printf("tex_pos = %f\n", tex_pos);
-		//pixel = img->addr + (y * img->line_len + dda->x * (img->bpp / 8));
-		//dda->color = *(unsigned int *)pixel;
 		int addon = dda->tex_y * img->line_len + tex_x * 4;
 		pixel = *(unsigned int *)(data->texture[tex_num].addr + addon);
 		dda->color = pixel;
