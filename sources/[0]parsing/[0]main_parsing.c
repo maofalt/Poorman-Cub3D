@@ -18,11 +18,13 @@ int	main_parsing(t_cub	*data, char *path)
 		return (0);
 	if (!parsing_text(data, path))
 		return (0);
+	//free_double_char(data->map);
 	if (!check_wall(data->map))
 		return (printf("nein\n"), 1);
 	if (!get_player_pos(data->map))
 		return (printf("more tha one or none nigga\n"), 1);
-	free_double_char(data->map);
+  if (!initialize_player(data))
+		return (0);
 	return (1);
 }
 

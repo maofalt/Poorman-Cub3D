@@ -6,7 +6,7 @@
 #    By: motero <motero@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 18:38:23 by motero            #+#    #+#              #
-#    Updated: 2023/02/25 23:38:11 by motero           ###   ########.fr        #
+#    Updated: 2023/03/03 22:46:10 by motero           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = cub3D
 #                                 HEADERS                                     #
 #=============================================================================#
 
-HDR_NAME = cub3D.h parsing.h structures.h mlx.h mlx_int.h mlx_engine.h colors.h
+HDR_NAME = cub3D.h parsing.h structures.h mlx.h mlx_int.h mlx_engine.h colors.h my_maths.h
 HDR_DIR = includes/
 HDRS = $(addprefix $(HDR_DIR), $(HDR_NAME))
 HDR_INC = -I includes -I libft/includes -I minilibx-linux/
@@ -84,7 +84,7 @@ OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 #=============================================================================#
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fpie #-fsanitize=leak -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address #-g #-fpie #-fsanitize=leak -fsanitize=address
 LIBA = ar rc
 LIBS = ranlib
 
