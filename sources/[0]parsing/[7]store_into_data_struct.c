@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:28:12 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:03:19 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:52:31 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	textures_to_data(t_cub *data, char **textures)
 			data->texture[i].mlx_img = NULL;
 			return (0);
 		}
+		data->texture[i].size = (t_vector_i){width, height};
+		data->texture[i].addr = mlx_get_data_addr(data->texture[i].mlx_img, \
+		&data->texture[i].bpp, &data->texture[i].line_len, \
+		&data->texture[i].endian);
 		i++;
 	}
 	return (1);

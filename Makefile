@@ -6,7 +6,7 @@
 #    By: motero <motero@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 18:38:23 by motero            #+#    #+#              #
-#    Updated: 2023/03/02 18:36:42 by motero           ###   ########.fr        #
+#    Updated: 2023/03/03 20:54:11 by motero           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 #=============================================================================#
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address #-g #-fpie #-fsanitize=leak -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address #-g #-fpie #-fsanitize=leak -fsanitize=address
 LIBA = ar rc
 LIBS = ranlib
 

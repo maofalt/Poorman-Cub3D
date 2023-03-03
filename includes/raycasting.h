@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:01:22 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:01:27 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:42:10 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ void	calculate_distance_projection(t_cub *data);
 void	calculate_line_height(t_cub *data);
 void	chose_color_wall(t_cub *data);
 
+
+/*############################################################################*/
+/*                         TEXTURE MAPPING                                    */
+/*############################################################################*/
+void	texturise_wall(t_cub *data);
+int		determine_texture(t_cub *data);
+int		determine_wall_x_hit(t_cub *data, int tex_num);
+void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x);
 #endif

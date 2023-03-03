@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 03:24:57 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:25:12 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:42:39 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@
 /*                              STRUCTURES                                    */
 /*############################################################################*/
 
-/* bpp = bits per pixel */
-typedef struct s_img_data
-{
-	void		*mlx_img;
-	char		*addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
-}	t_img_data;
-
 /* Vector structure for 2D float vector
 ** Vector structure for 2D unsigned int vector
 ** Vector structure for 2D int vectors
@@ -47,6 +37,18 @@ typedef struct s_img_data
 typedef float			t_vector_f __attribute__((vector_size (8)));
 typedef unsigned int	t_vector_u __attribute__((vector_size (8)));
 typedef int				t_vector_i __attribute__((vector_size (8)));
+
+/* bpp = bits per pixel */
+typedef struct s_img_data
+{
+	void		*mlx_img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+	t_vector_i	size;
+}	t_img_data;
+
 
 /* Parsing structure for CUB3D stocking information from .cub file
 ** a wolrd map in a 2D int array of MAPWIDTH * MAPHEIGHT
@@ -78,6 +80,8 @@ typedef struct s_dda
 	int			drawEnd;
 	int			hit;
 	int			side;
+	int			tex_y;
+	int			x;
 }				t_dda;
 
 typedef struct s_cub

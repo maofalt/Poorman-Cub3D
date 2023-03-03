@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/02 18:42:18 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/03 21:00:15 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,40 +45,33 @@ int	ft_render(t_cub *data)
 void	calculate_ray_angle(t_cub *data)
 {
 	int			x;
-	int			y;
 	double		cameraX;
 	t_dda		*dda;
 
 	dda = &(data->dda);
 	x = 0;
 	dda->pos = data->player.pos;
-	// printf("player pos: %f, %f\n", dda->pos[0], dda->pos[1]);
-	// printf("player dir: %f, %f\n", data->player.dir[0], data->player.dir[1]);
-	// printf("player plane: %f, %f\n---------------------\n", data->player.plane[0], data->player.plane[1]);
 	while (x < WINDOW_WIDTH)
 	{
 		dda->hit = 0;
 		cameraX = 2 * x / (double)WINDOW_WIDTH - 1;
 		dda->rayDir[0] = data->player.dir[0] + data->player.plane[0] * cameraX;
 		dda->rayDir[1] = data->player.dir[1] + data->player.plane[1] * cameraX;
-		//which box of the map we're in
 		dda->map = (t_vector_i){(int)dda->pos[0], (int)dda->pos[1]};
-		//printf("map: %d, %d\n", dda->map[0], dda->map[1]);
 		calculate_length_ray(dda);
-		//printf("before sideDist[0] = %f, sideDist[1] = %f\n", dda->sideDist[0], dda->sideDist[1]);
 		calculate_step_sideDist(dda);
-		//printf("after sideDist[0] = %f, sideDist[1] = %f\n", dda->sideDist[0], dda->sideDist[1]);
 		perform_dda(data);
 		calculate_distance_projection(data);
 		calculate_line_height(data);
-		chose_color_wall(data);
-		y = dda->drawStart;
-	//	printf("drawStart: %d, drawEnd: %d\n===========\n", dda->drawStart, dda->drawEnd);
-		while (y <= dda->drawEnd)
-		{
-			img_pix_put(&((*data).screen), x, y, dda->color);
-			y++;
-		}
+		//chose_color_wall(data);
+		dda->x = x;
+		texturise_wall(data);
+		// y = dda->drawStart;
+		// while (y <= dda->drawEnd)
+		// {
+		// 	img_pix_put(&((*data).screen), x, y, dda->color);
+		// 	y++;
+		// }
 		x++;
 	}
 	data->update = 0;
@@ -212,5 +205,98 @@ void	chose_color_wall(t_cub *data)
 			dda->color = 0x000000FF;
 		else
 			dda->color = 0x00FFFF00;
+	}
+}
+
+/*
+** Choose the color pixel based on the texture and the side
+** of the wall (if the wall is at the NORTH or SOUTH or EAST or WEST)
+** and the x position of the wall
+** We use wallX  which represents the exact blue where the wall was hit
+** It is calculate by calculating the x o y coordinate in te wolrd
+** then substracting the integeger value  of the wall off the coordinate
+** We use the texture to get the color of the pixel
+*/
+
+void	texturise_wall(t_cub *data)
+{
+	int		tex_num;
+	int		tex_x;
+	t_dda	*dda;
+
+	dda = &(data->dda);
+	tex_num = determine_texture(data);
+	tex_x = determine_wall_x_hit(data, tex_num);
+	copy_coresponding_pixel(data, tex_num, tex_x);
+}
+
+int	determine_texture(t_cub *data)
+{
+	int		tex_num;
+	t_dda	*dda;
+
+	dda = &(data->dda);
+	tex_num = 0;
+	if (dda->side == 0)
+	{
+		if (dda->rayDir[0] > 0)
+			tex_num = 3;
+		else
+			tex_num = 1;
+	}
+	else
+	{
+		if (dda->rayDir[1] > 0)
+			tex_num = 2;
+		else
+			tex_num = 0;
+	}
+	return (tex_num);
+}
+
+int	determine_wall_x_hit(t_cub *data, int tex_num)
+{
+	float	wall_x;
+	int		tex_x;
+	t_dda	*dda;
+
+	dda = &(data->dda);
+	if (dda->side == 0)
+		wall_x = dda->pos[1] + dda->perpWallDist * dda->rayDir[1];
+	else
+		wall_x = dda->pos[0] + dda->perpWallDist * dda->rayDir[0];
+	wall_x -= floor(wall_x);
+	tex_x = (int)(wall_x * (double)data->texture[tex_num].size[0]);
+	if (dda->side == 0 && dda->rayDir[0] > 0)
+		tex_x = data->texture[tex_num].size[0] - tex_x - 1;
+	if (dda->side == 1 && dda->rayDir[1] < 0)
+		tex_x = data->texture[tex_num].size[0] - tex_x - 1;
+	return (tex_x);
+}
+
+void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
+{
+	const float	step = \
+	1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
+	float		tex_pos;
+	t_dda		*dda;
+	int			y;
+
+	printf("----Copy coresponding pixel----\n");
+	printf("step = %f\n", step);
+	dda = &(data->dda);
+	tex_pos = (dda->drawStart - WINDOW_HEIGHT / 2 + dda->lineHeight / 2) * step;
+	printf("tex_pos = %f\n", tex_pos);
+	y = dda->drawStart;
+	printf("y = %d\n", y);
+	while (y < dda->drawEnd)
+	{
+		dda->tex_y = (int)tex_pos & (data->texture[tex_num].size[1] - 1);
+		//printf("tex_y = %d\n", dda->tex_y);
+		tex_pos += step;
+		//printf("tex_pos = %f\n", tex_pos);
+		dda->color = data->texture[tex_num].addr[data->texture[tex_num].size[1] * dda->tex_y + tex_x];
+		img_pix_put(&((*data).screen), dda->x, y, dda->color);
+		y++;
 	}
 }
