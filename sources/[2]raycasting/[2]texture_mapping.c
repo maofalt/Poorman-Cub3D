@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:14:27 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:17:44 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	determine_texture(t_cub *data)
 	tex_num = 0;
 	if (dda->side == 0)
 	{
-		if (dda->rayDir[0] > 0)
+		if (dda->ray_dir[0] > 0)
 			tex_num = 3;
 		else
 			tex_num = 1;
 	}
 	else
 	{
-		if (dda->rayDir[1] > 0)
+		if (dda->ray_dir[1] > 0)
 			tex_num = 2;
 		else
 			tex_num = 0;
@@ -66,14 +66,14 @@ int	determine_wall_x_hit(t_cub *data, int tex_num)
 
 	dda = &(data->dda);
 	if (dda->side == 0)
-		wall_x = dda->pos[1] + dda->perpWallDist * dda->rayDir[1];
+		wall_x = dda->pos[1] + dda->perp_wall_dist * dda->ray_dir[1];
 	else
-		wall_x = dda->pos[0] + dda->perpWallDist * dda->rayDir[0];
+		wall_x = dda->pos[0] + dda->perp_wall_dist * dda->ray_dir[0];
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double)data->texture[tex_num].size[0]);
-	if (dda->side == 0 && dda->rayDir[0] > 0)
+	if (dda->side == 0 && dda->ray_dir[0] > 0)
 		tex_x = data->texture[tex_num].size[0] - tex_x - 1;
-	if (dda->side == 1 && dda->rayDir[1] < 0)
+	if (dda->side == 1 && dda->ray_dir[1] < 0)
 		tex_x = data->texture[tex_num].size[0] - tex_x - 1;
 	return (tex_x);
 }
@@ -81,7 +81,7 @@ int	determine_wall_x_hit(t_cub *data, int tex_num)
 void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 {
 	const float	step = \
-	1.0 * data->texture[tex_num].size[1] / data->dda.lineHeight;
+	1.0 * data->texture[tex_num].size[1] / data->dda.line_height;
 	t_dda		*dda;
 	int			y;
 	int			pixel;
@@ -89,11 +89,11 @@ void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 
 	img = (&data->texture[tex_num]);
 	dda = &(data->dda);
-	dda->tex_pos = (dda->drawStart - WINDOW_HEIGHT / 2
-			+ dda->lineHeight / 2) * step;
-	y = dda->drawStart;
+	dda->tex_pos = (dda->draw_start - WINDOW_HEIGHT / 2
+			+ dda->line_height / 2) * step;
+	y = dda->draw_start;
 	dda->tex_y = (int)dda->tex_pos & (data->texture[tex_num].size[0] - 1);
-	while (y < dda->drawEnd)
+	while (y < dda->draw_end)
 	{
 		dda->tex_y = (int)dda->tex_pos;
 		dda->tex_pos += step;

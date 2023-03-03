@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:07:58 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:16:19 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	calculate_ray_angle(t_cub *data)
 	{
 		dda->hit = 0;
 		camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
-		dda->rayDir[0] = data->player.dir[0] + data->player.plane[0] * camera_x;
-		dda->rayDir[1] = data->player.dir[1] + data->player.plane[1] * camera_x;
+		dda->ray_dir[0] = data->player.dir[0] + data->player.plane[0] * camera_x;
+		dda->ray_dir[1] = data->player.dir[1] + data->player.plane[1] * camera_x;
 		dda->map = (t_vector_i){(int)dda->pos[0], (int)dda->pos[1]};
 		calculate_length_ray(dda);
 		calculate_step_side_dist(dda);
@@ -77,14 +77,14 @@ void	chose_color_wall(t_cub *data)
 	dda = &(data->dda);
 	if (dda->side == 0)
 	{
-		if (dda->rayDir[0] > 0)
+		if (dda->ray_dir[0] > 0)
 			dda->color = 0x00FF0000;
 		else
 			dda->color = 0x0000FF00;
 	}
 	else
 	{
-		if (dda->rayDir[1] > 0)
+		if (dda->ray_dir[1] > 0)
 			dda->color = 0x000000FF;
 		else
 			dda->color = 0x00FFFF00;

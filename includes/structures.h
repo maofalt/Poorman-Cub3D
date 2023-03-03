@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 03:24:57 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:11:22 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 00:17:44 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,22 @@ typedef struct s_player
 
 typedef struct s_dda
 {
-	t_vector_f	rayDir;
-	t_vector_f	sideDist;
-	t_vector_f	deltaDist;
+	t_vector_f	ray_dir;
+	t_vector_f	side_dist;
+	t_vector_f	delta_dist;
 	t_vector_i	map;
 	t_vector_f	pos;
 	t_vector_i	step;
 	uint32_t	color;
-	float		perpWallDist;
+	float		perp_wall_dist;
 	float		tex_pos;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 	int			hit;
 	int			side;
 	int			tex_y;
 	int			x;
-	
 }				t_dda;
 
 typedef struct s_cub
