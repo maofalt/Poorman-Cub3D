@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/03/02 18:25:27 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:33:09 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_handle_keypress(int keysym, t_cub *data)
 	ft_destroy_window_button(keysym, data);
 	printf("key pressed: %d\n", keysym);
 	if (keysym == W_KEY || keysym == S_KEY || keysym == D_KEY
-		|| keysym == A_KEY)
+		|| keysym == A_KEY || keysym == LEFT_KEY || keysym == RIGHT_KEY)
 		ft_movements_keys(keysym, data);
 	ft_keyboard_press(keysym, data);
 	data->update = 1;

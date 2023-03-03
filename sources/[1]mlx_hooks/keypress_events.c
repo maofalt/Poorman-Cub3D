@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/03/02 18:23:55 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:32:50 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,46 +25,58 @@ void	ft_destroy_window_button(int keysym, t_cub *data)
 	/* Events catching movements and moving into the fractal window*/
 void	ft_movements_keys(int keysym, t_cub *data)
 {
-    t_dda           dda;
-    t_player        player;
-    const float     move_speed = 0.35;
+	t_dda			dda;
+	t_player		player;
+	const float		move_speed = 0.35;	
 
-    dda = data->dda;
-    player = data->player;
-    if (data->update)
-        return ;
-    printf("key pressed: %d\n", keysym);
-    if (keysym == W_KEY)
-    {
-        if(data->map[(int)(dda.pos[0] + player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
-            data->player.pos[0] += player.dir[0] * move_speed;
-        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] + player.dir[1] * move_speed)] != '1')
-            data->player.pos[1] += player.dir[1] * move_speed;
-    }
-    else if (keysym == S_KEY)
-    {
-        if(data->map[(int)(dda.pos[0] - player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
-            data->player.pos[0] -= player.dir[0] * move_speed;
-        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.dir[1] * move_speed)] != '1')
-            data->player.pos[1] -= player.dir[1] * move_speed;
-    }
-    else if (keysym == A_KEY)
-    {
-        //moveto the left  if no wall at the left
-        if(data->map[(int)(dda.pos[0] - player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
-            data->player.pos[0] -= player.plane[0] * move_speed;
-        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.plane[1] * move_speed)] != '1')
-            data->player.pos[1] -= player.plane[1] * move_speed;
-    }
-    else if (keysym == D_KEY)
-    {
-        //moveto the right  if no wall at the right
-        if(data->map[(int)(dda.pos[0] + player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
-            data->player.pos[0] += player.plane[0] * move_speed;
-        if(data->map[(int)(dda.pos[0])][(int)(dda.pos[1] + player.plane[1] * move_speed)] != '1')
-            data->player.pos[1] += player.plane[1] * move_speed;
-    }
-    data->update = 1;
+	dda = data->dda;
+	player = data->player;
+	if (data->update)
+		return ;
+	printf("key pressed: %d\n", keysym);
+	if (keysym == W_KEY)
+	{
+		if (data->map[(int)(dda.pos[0] + player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
+			data->player.pos[0] += player.dir[0] * move_speed;
+		if (data->map[(int)(dda.pos[0])][(int)(dda.pos[1] + player.dir[1] * move_speed)] != '1')
+			data->player.pos[1] += player.dir[1] * move_speed;
+	}
+	else if (keysym == S_KEY)
+	{
+		if (data->map[(int)(dda.pos[0] - player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')
+			data->player.pos[0] -= player.dir[0] * move_speed;
+		if (data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.dir[1] * move_speed)] != '1')
+			data->player.pos[1] -= player.dir[1] * move_speed;
+	}
+	else if (keysym == A_KEY)
+	{
+		if (data->map[(int)(dda.pos[0] - player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
+			data->player.pos[0] -= player.plane[0] * move_speed;
+		if (data->map[(int)(dda.pos[0])][(int)(dda.pos[1] - player.plane[1] * move_speed)] != '1')
+			data->player.pos[1] -= player.plane[1] * move_speed;
+	}
+	else if (keysym == D_KEY)
+	{
+		if (data->map[(int)(dda.pos[0] + player.plane[0] * move_speed)][(int)(dda.pos[1])] != '1')
+			data->player.pos[0] += player.plane[0] * move_speed;
+		if (data->map[(int)(dda.pos[0])][(int)(dda.pos[1] + player.plane[1] * move_speed)] != '1')
+			data->player.pos[1] += player.plane[1] * move_speed;
+	}
+	else if (keysym == LEFT_KEY)
+	{
+		data->player.dir[0] = player.dir[0] * cos(-0.1) - player.dir[1] * sin(-0.1);
+		data->player.dir[1] = player.dir[0] * sin(-0.1) + player.dir[1] * cos(-0.1);
+		data->player.plane[0] = player.plane[0] * cos(-0.1) - player.plane[1] * sin(-0.1);
+		data->player.plane[1] = player.plane[0] * sin(-0.1) + player.plane[1] * cos(-0.1);
+	}
+	else if (keysym == RIGHT_KEY)
+	{
+		data->player.dir[0] = player.dir[0] * cos(0.1) - player.dir[1] * sin(0.1);
+		data->player.dir[1] = player.dir[0] * sin(0.1) + player.dir[1] * cos(0.1);
+		data->player.plane[0] = player.plane[0] * cos(0.1) - player.plane[1] * sin(0.1);
+		data->player.plane[1] = player.plane[0] * sin(0.1) + player.plane[1] * cos(0.1);
+	}
+	data->update = 1;
 }
 
 

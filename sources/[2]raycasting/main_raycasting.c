@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/02/27 03:07:42 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:42:18 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ void	perform_dda(t_cub *data)
 			dda->map[1] += dda->step[1];
 			dda->side = 1;
 		}
-		//printf("map[0] = %d, map[1] = %d\n", dda->map[0], dda->map[1]);
+		printf("map[0] = %d, map[1] = %d\n", dda->map[0], dda->map[1]);
 		//printf("map[%d][%d] = |%c|\n", dda->map[0], dda->map[1], data->map[dda->map[0]][dda->map[1]]);
 		if (data->map[dda->map[0]][dda->map[1]] == '1')
 		{
