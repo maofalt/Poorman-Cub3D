@@ -6,7 +6,7 @@
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:30:35 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:02:40 by yanthoma         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:37:16 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main_parsing(t_cub	*data, char *path)
 	if (!parsing_text(data, path))
 		return (0);
 	if (!check_wall(data->map))
-		return (print_error("Invalid Map"), 0);
+		return (print_error("Error\nInvalid Map\n"), 0);
 	if (!get_player_pos(data->map))
-		return (print_error("Invalid Player nbr or position"), 0);
+		return (print_error("Error\nInvalid Player nbr or position\n"), 0);
 	if (!initialize_player(data))
 		return (0);
 	return (1);
