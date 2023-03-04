@@ -12,7 +12,7 @@
 
 #include "parsing.h"
 
-int	initialize_parsing_lines(char **line, int *mask, char	*path)
+int	initialize_parsing_lines(char **line, int *mask, char *path)
 {
 	int	fd;
 

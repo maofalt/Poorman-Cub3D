@@ -54,6 +54,10 @@ int		file_empty(int fd);
 int		parsing_text(t_cub *data, char *path);
 int		init_textures_colors(char ***textures, char ***colors);
 int		parsing_lines(char *path, char **textures, char **colors, char ***map);
+int		initialize_parsing_lines(char **line, int *mask, char *path);
+void	finish_file_read(int *fd);
+void	free_tmp_and_line(char ***tmp, char **line);
+int		read_line(char **line, int fd);
 void	free_double_char(char **array);
 void	free_all(char **textures, char **colors, char **map);
 
@@ -77,7 +81,7 @@ int		check_textures_validity(char **textures);
 /*############################################################################*/
 
 int		check_color_elements(char **color, char *line, int *mask);
-int		add_last_color(char **color, char *tmp);
+int		add_last_color(char **color, char **tmp);
 
 /*############################################################################*/
 /*                              CHECK COLOR ELEMENTS                          */
