@@ -101,7 +101,7 @@ typedef struct s_cub
 	int			update;
 }				t_cub;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	char		**textures;
 	char		**colors;

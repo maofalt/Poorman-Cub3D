@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATHS_H
-# define MATHS_H
+#ifndef MY_MATHS_H
+# define MY_MATHS_H
 
 # include <stdlib.h>
 # include <stdint.h>
@@ -20,7 +20,6 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
-
 
 /*############################################################################*/
 /*                          MATHS FUNCTIONS                                   */

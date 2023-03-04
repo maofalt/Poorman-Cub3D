@@ -26,7 +26,6 @@
 # include <mlx.h>
 # include <math.h>
 
-
 # include <wchar.h>
 # include <uchar.h>
 # include <locale.h>
@@ -131,8 +130,9 @@ void	copy_map(char ***new_map, char **map, int height, int width);
 /*############################################################################*/
 /*                              initiazlize player  structure                 */
 /*############################################################################*/
-int     initialize_player(t_cub *data);
-void    initialize_player_pos(t_cub *data);
-void    initialize_player_dir(t_cub *data);
-void    initialize_player_plane(t_cub *data);
+int		initialize_player(t_cub *data);
+void	initialize_player_pos(t_cub *data);
+void	initialize_player_dir(t_cub *data);
+void	initialize_player_plane(t_cub *data);
+
 #endif

@@ -6,6 +6,7 @@
 		"maths.h": "c",
 		"stdint.h": "c",
 		"my_maths.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"stdlib.h": "c"
 	}
 }
