@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/03/02 18:33:09 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 17:08:02 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ int	ft_handle_keyrelease(int keysym, t_cub *data)
 
 int	ft_handle_boutonpress(int buttonsym, int x, int y, t_cub *data)
 {
-	(void)data;
 	(void)x;
 	(void)y;
-	ft_printf("Button1 pressed with id %d\n", buttonsym);
-	if (buttonsym == Button1)
-		ft_printf("Button1 pressed\n");
+	if (buttonsym == 1)
+		rotate_counter_clockwise(data, 0.1);
+	if (buttonsym == 3)
+		rotate_clockwise(data, 0.1);
+	data->update = 1;
 	return (0);
 }
 

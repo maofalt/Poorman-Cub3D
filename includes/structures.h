@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 03:24:57 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:17:44 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 16:58:23 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_dda
 	int			side;
 	int			tex_y;
 	int			x;
+	t_vector_i	mouse;
 }				t_dda;
 
 typedef struct s_cub

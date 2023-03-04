@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:41:27 by motero            #+#    #+#             */
-/*   Updated: 2023/03/02 18:25:04 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 17:07:16 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	move_right(t_cub *data);
 /*############################################################################*/
 /*                             ROTATING ACTIONS                               */
 /*############################################################################*/
-void	rotate_counter_clockwise(t_cub *data);
-void	rotate_clockwise(t_cub *data);
+void	rotate_counter_clockwise(t_cub *data, float ratio);
+void	rotate_clockwise(t_cub *data, float ratio);
 
 #endif

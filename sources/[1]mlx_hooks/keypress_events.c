@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:35:41 by motero            #+#    #+#             */
-/*   Updated: 2023/03/03 18:02:45 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 17:08:42 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_movements_keys(int keysym, t_cub *data)
 	else if (keysym == D_KEY)
 		move_right(data);
 	else if (keysym == LEFT_KEY)
-		rotate_counter_clockwise(data);
+		rotate_counter_clockwise(data, 0.1);
 	else if (keysym == RIGHT_KEY)
-		rotate_clockwise(data);
+		rotate_clockwise(data, 0.1);
 	data->update = 1;
 }
 

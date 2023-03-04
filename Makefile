@@ -6,7 +6,7 @@
 #    By: motero <motero@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 18:38:23 by motero            #+#    #+#              #
-#    Updated: 2023/03/04 00:21:40 by motero           ###   ########.fr        #
+#    Updated: 2023/03/04 17:16:40 by motero           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,38 @@ SRCS_NAME_DIRECTORIES = $(patsubst sources/%,%,$(SRCS_RAW_NAME_DIRECTORIES))
 
 SRCS_ALL = $(wildcard $(SRCS_RAW_NAME_DIRECTORIES)/)
 SRCS_RAW_ALL = $(shell find $(SRCS_DIR_project) -type f -name "*.c")
-SRCS_ALL = $(patsubst sources/%,%,$(SRCS_RAW_ALL))
-SRCS_NAME_project = $(SRCS_ALL)
-#SRCS_NAME_project =
+#SRCS_ALL = $(patsubst sources/%,%,$(SRCS_RAW_ALL))
+#SRCS_NAME_project = $(SRCS_ALL)
+SRCS_NAME_project = \
+[2]raycasting/[0]main_raycasting.c \
+[2]raycasting/[2]texture_mapping.c \
+[2]raycasting/[1]dda_calculation.c \
+[1]mlx_hooks/moving_actions.c \
+[1]mlx_hooks/mlx_hooks.c \
+[1]mlx_hooks/general_events.c \
+[1]mlx_hooks/keypress_events.c \
+[1]mlx_hooks/rotate_actions.c \
+[0]main.c \
+[0]parsing/[9-bis]transform_map_for_flood_utils.c \
+[0]parsing/[0]main_parsing.c \
+[0]parsing/[10]verif_wall_player.c \
+[0]parsing/[2-bis]free_parsing_text.c \
+[0]parsing/[5]parsing_colors.c \
+[0]parsing/[6]parsing_textures.c \
+[0]parsing/[5-bis]check_color_range.c \
+[0]parsing/[8]parse_map.c \
+[0]parsing/[1]check_valid_file.c \
+[0]parsing/[6-bis]validate_textures.c \
+[0]parsing/[10]initialize_player.c \
+[0]parsing/[7]store_into_data_struct.c \
+[0]parsing/[5-bis]valid_colors.c \
+[0]parsing/[9]transform_map_for_flood.c \
+[0]parsing/[2]parsing_text.c \
+[0]parsing/[4]check_map.c \
+[5]colors/[0]colors_main.c \
+[4]mlx_engine/mlx_main.c \
+[4]mlx_engine/[1]draw_things.c \
+[6]maths/[0]maths.c \
 
 SRCS_PROJECT = $(addprefix $(SRCS_DIR_project), $(SRCS_NAME_project))
 
@@ -84,7 +113,7 @@ OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 #=============================================================================#
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address #-g #-fpie #-fsanitize=leak -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror  #-Ofast #-g3 -fsanitize=address -fsanitize=leak#-g #-fpie #-fsanitize=leak -fsanitize=address
 LIBA = ar rc
 LIBS = ranlib
 
@@ -155,6 +184,8 @@ normal := $(shell tput sgr0)
 #=============================================================================#
 #                                RULES                                        #
 #=============================================================================#
+
+bonus : all
 
 all: check_libft check_mlx project ${NAME} ${HDRS}
 		@echo "\n $(GREEN) $(bold) \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/ \|/"
