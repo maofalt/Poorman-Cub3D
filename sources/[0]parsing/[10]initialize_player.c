@@ -63,22 +63,25 @@ void	initialize_player_pos(t_cub *data)
 */
 void	initialize_player_dir(t_cub *data)
 {
-	if (data->map[(int)data->player.pos[0]][(int)data->player.pos[1]] == 'N')
+	char	orientation;
+
+	orientation = data->map[(int)data->player.pos[0]][(int)data->player.pos[1]];
+	if (orientation == 'N')
 	{
 		data->player.dir[0] = -1;
 		data->player.dir[1] = 0;
 	}
-	else if (data->map[(int)data->player.pos[0]][(int)data->player.pos[1]] == 'S')
+	else if (orientation == 'S')
 	{
 		data->player.dir[0] = 1;
 		data->player.dir[1] = 0;
 	}
-	else if (data->map[(int)data->player.pos[0]][(int)data->player.pos[1]] == 'E')
+	else if (orientation == 'E')
 	{
 		data->player.dir[0] = 0;
 		data->player.dir[1] = 1;
 	}
-	else if (data->map[(int)data->player.pos[0]][(int)data->player.pos[1]] == 'W')
+	else if (orientation == 'W')
 	{
 		data->player.dir[0] = 0;
 		data->player.dir[1] = -1;

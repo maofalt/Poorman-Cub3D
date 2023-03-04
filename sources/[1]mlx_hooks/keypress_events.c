@@ -33,7 +33,6 @@ void	ft_movements_keys(int keysym, t_cub *data)
 	player = data->player;
 	if (data->update)
 		return ;
-	printf("key pressed: %d\n", keysym);
 	if (keysym == W_KEY)
 	{
 		if (data->map[(int)(dda.pos[0] + player.dir[0] * move_speed)][(int)(dda.pos[1])] != '1')

@@ -26,9 +26,7 @@ void	texturise_wall(t_cub *data)
 {
 	int		tex_num;
 	int		tex_x;
-	t_dda	*dda;
 
-	dda = &(data->dda);
 	tex_num = determine_texture(data);
 	tex_x = determine_wall_x_hit(data, tex_num);
 	copy_coresponding_pixel(data, tex_num, tex_x);
@@ -85,9 +83,7 @@ void	copy_coresponding_pixel(t_cub *data, int tex_num, int tex_x)
 	t_dda		*dda;
 	int			y;
 	int			pixel;
-	t_img_data	*img;
 
-	img = (&data->texture[tex_num]);
 	dda = &(data->dda);
 	dda->tex_pos = (dda->draw_start - WINDOW_HEIGHT / 2
 			+ dda->line_height / 2) * step;

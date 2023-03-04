@@ -48,8 +48,7 @@ int	parsing_text(t_cub *data, char *path)
 	if (!check_map(&map))
 		return (free_all(textures, colors, map), 0);
 	data->map = map;
-	free_all(textures, colors, NULL);
-	return (1);
+	return (free_all(textures, colors, NULL), 1);
 }
 
 int	init_textures_colors(char ***textures, char ***colors)
@@ -68,6 +67,23 @@ int	init_textures_colors(char ***textures, char ***colors)
 	return (1);
 }
 
+void	free_tmp_and_line(char ***tmp, char **line)
+{
+	if (*tmp)
+		free_double_char(*tmp);
+	*tmp = NULL;
+	if (*line)
+		free(*line);
+	*line = NULL;
+}
+
+void	finish_file_read(int *fd)
+{
+	close(*fd);
+	*fd = -1;
+	get_next_line(-1);
+}
+
 int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 {
 	int		fd;
@@ -75,7 +91,6 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 	char	**tmp;
 	int		mask;
 
-	tmp = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error\nOpen() returned -1\n", 1), 0);
@@ -98,28 +113,18 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 			}
 			else
 			{
-				if (tmp)
-					free_double_char(tmp);
-				if (line)
-					free(line);
-				line = NULL;
-				get_next_line(-1);
-				close(fd);
+				free_tmp_and_line(&tmp, &line);
+				finish_file_read(&fd);
 				return (ft_putstr_fd("Error\nParse error\n", 1), 0);
 			}
 		}
-		if (tmp)
-			free_double_char(tmp);
-		tmp = NULL;
-		if (line)
-			free(line);
-		line = NULL;
+		free_tmp_and_line(&tmp, &line);
 		line = get_next_line(fd);
 	}
-	close(fd);
-	get_next_line(-1);
+	finish_file_read(&fd);
 	return (1);
 }
+
 
 void	free_double_char(char **array)
 {
