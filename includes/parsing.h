@@ -66,7 +66,7 @@ void	free_all(char **textures, char **colors, char **map);
 /*############################################################################*/
 
 int		check_texture_elements(char *line, char **textures, int *mask);
-int		add_last_texture(char **texture, char *tmp);
+int		add_last_texture(char **texture, char **tmp);
 
 /*############################################################################*/
 /*                              CHECK TEXTURE ELEMENTS                        */
