@@ -88,4 +88,18 @@ void	ft_destroy_window_button(int keysym, t_cub *data);
 void	ft_movements_keys(int keysym, t_cub *data);
 void	ft_keyboard_press(int keysym, t_cub *data);
 
+/*############################################################################*/
+/*                             MOVING ACTIONS                                 */
+/*############################################################################*/
+void	move_forward(t_cub *data);
+void	move_backward(t_cub *data);
+void	move_left(t_cub *data);
+void	move_right(t_cub *data);
+
+/*############################################################################*/
+/*                             ROTATING ACTIONS                               */
+/*############################################################################*/
+void	rotate_counter_clockwise(t_cub *data);
+void	rotate_clockwise(t_cub *data);
+
 #endif
