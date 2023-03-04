@@ -21,6 +21,11 @@ int	check_texture_elements(char *line, char **textures, int *mask)
 		return (ft_putstr_fd("Error\nInvalid text line\n", 1), 0);
 	if (!tmp[0] || tmp[1] == NULL || tmp[1][0] == '\n' || tmp[2] != 0)
 		return (free_double_char(tmp), 0);
+	return (check_texture_element(tmp, textures, mask));
+}
+
+int	check_texture_element(char **tmp, char **textures, int *mask)
+{
 	if (ft_strncmp(tmp[0], "NO", 3) == 0)
 	{
 		*mask = *mask | 1;
