@@ -61,7 +61,7 @@ void	free_all(char **textures, char **colors, char **map);
 /*                              CHECK TEXTURE ELEMENTS                        */
 /*############################################################################*/
 
-int		check_texture_elements(char **tmp, char **textures, int *mask);
+int		check_texture_elements(char *line, char **textures, int *mask);
 int		add_last_texture(char **texture, char *tmp);
 
 /*############################################################################*/
@@ -76,7 +76,7 @@ int		check_textures_validity(char **textures);
 /*                              CHECK COLOR ELEMENTS                          */
 /*############################################################################*/
 
-int		check_color_elements(char **color, char **tmp, int *mask);
+int		check_color_elements(char **color, char *line, int *mask);
 int		add_last_color(char **color, char *tmp);
 
 /*############################################################################*/

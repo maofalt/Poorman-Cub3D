@@ -12,10 +12,15 @@
 
 #include "parsing.h"
 
-int	check_color_elements(char **color, char **tmp, int *mask)
+int	check_color_elements(char **color, char *line, int *mask)
 {
+	char	**tmp;
+
+	tmp = ft_split(line, ' ');
+	if (!tmp)
+		return (ft_putstr_fd("Error\nInvalid text line\n", 1), 0);
 	if (!tmp[0] || tmp[1] == 0 || tmp[2] != NULL)
-		return (0);
+		return (free_double_char(tmp), 0);
 	if (ft_strncmp(tmp[0], "F", 2) == 0)
 	{
 		*mask = *mask | 8;
@@ -26,6 +31,7 @@ int	check_color_elements(char **color, char **tmp, int *mask)
 		*mask = *mask | 16;
 		return (add_last_color(&color[1], tmp[1]));
 	}
+	free_double_char(tmp);
 	return (0);
 }
 

@@ -12,10 +12,15 @@
 
 #include "parsing.h"
 
-int	check_texture_elements(char **tmp, char **textures, int *mask)
+int	check_texture_elements(char *line, char **textures, int *mask)
 {
+	char	**tmp;
+
+	tmp = ft_split(line, ' ');
+	if (!tmp)
+		return (ft_putstr_fd("Error\nInvalid text line\n", 1), 0);
 	if (!tmp[0] || tmp[1] == NULL || tmp[1][0] == '\n' || tmp[2] != 0)
-		return (0);
+		return (free_double_char(tmp), 0);
 	if (ft_strncmp(tmp[0], "NO", 3) == 0)
 	{
 		*mask = *mask | 1;
@@ -36,6 +41,7 @@ int	check_texture_elements(char **tmp, char **textures, int *mask)
 		*mask = *mask | 8;
 		return (add_last_texture(&textures[3], tmp[1]));
 	}
+	free_double_char(tmp);
 	return (0);
 }
 
