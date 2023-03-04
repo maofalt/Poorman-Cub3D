@@ -35,7 +35,7 @@ int	parsing_text(t_cub *data, char *path)
 		print_error("Incorrect Map Information while parse"), 0);
 	if (!valide_textures(textures))
 		return (free_all(textures, colors, map), \
-		print_error("Incorrect Map Information2"), 0);
+		print_error("Incorrect Map Information"), 0);
 	if (!valide_colors(colors))
 		return (free_all(textures, colors, map), \
 		print_error("Incorrect Map Colors"), 0);

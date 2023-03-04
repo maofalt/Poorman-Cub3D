@@ -1,0 +1,83 @@
+==27315== Memcheck, a memory error detector
+==27315== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==27315== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==27315== Command: ./cub3D Cub3D-Destroyer/maps/maps_buged/seveeral_texture_per_line__copy.cub
+==27315== 
+Error
+Parse error
+==27315== Conditional jump or move depends on uninitialised value(s)
+==27315==    at 0x110E34: free_all ([2-bis]free_parsing_text.c:76)
+==27315==    by 0x1118C0: parsing_text ([2]parsing_text.c:34)
+==27315==    by 0x11093C: main_parsing ([0]main_parsing.c:19)
+==27315==    by 0x114367: main ([0]main.c:46)
+==27315== 
+==27315== Use of uninitialised value of size 8
+==27315==    at 0x110DE8: free_double_char ([2-bis]free_parsing_text.c:64)
+==27315==    by 0x110E41: free_all ([2-bis]free_parsing_text.c:77)
+==27315==    by 0x1118C0: parsing_text ([2]parsing_text.c:34)
+==27315==    by 0x11093C: main_parsing ([0]main_parsing.c:19)
+==27315==    by 0x114367: main ([0]main.c:46)
+==27315== 
+==27315== Use of uninitialised value of size 8
+==27315==    at 0x110DC5: free_double_char ([2-bis]free_parsing_text.c:66)
+==27315==    by 0x110E41: free_all ([2-bis]free_parsing_text.c:77)
+==27315==    by 0x1118C0: parsing_text ([2]parsing_text.c:34)
+==27315==    by 0x11093C: main_parsing ([0]main_parsing.c:19)
+==27315==    by 0x114367: main ([0]main.c:46)
+==27315== 
+==27315== Invalid free() / delete / delete[] / realloc()
+==27315==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27315==    by 0x110DCF: free_double_char ([2-bis]free_parsing_text.c:66)
+==27315==    by 0x110E41: free_all ([2-bis]free_parsing_text.c:77)
+==27315==    by 0x1118C0: parsing_text ([2]parsing_text.c:34)
+==27315==    by 0x11093C: main_parsing ([0]main_parsing.c:19)
+==27315==    by 0x114367: main ([0]main.c:46)
+==27315==  Address 0xe5894855fa1e0ff3 is not stack'd, malloc'd or (recently) free'd
+==27315== 
+==27315== Conditional jump or move depends on uninitialised value(s)
+==27315==    at 0x484B235: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27315==    by 0x110DFB: free_double_char ([2-bis]free_parsing_text.c:69)
+==27315==    by 0x110E41: free_all ([2-bis]free_parsing_text.c:77)
+==27315==    by 0x1118C0: parsing_text ([2]parsing_text.c:34)
+==27315==    by 0x11093C: main_parsing ([0]main_parsing.c:19)
+==27315==    by 0x114367: main ([0]main.c:46)
+==27315== 
+==27315== Invalid free() / delete / delete[] / realloc()
+==27315==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27315==    by 0x110DFB: free_double_char ([2-bis]free_parsing_text.c:69)
+==27315==    by 0x110E41: free_all ([2-bis]free_parsing_text.c:77)
+==27315==    by 0x1118C0: parsing_text ([2]parsing_text.c:34)
+==27315==    by 0x11093C: main_parsing ([0]main_parsing.c:19)
+==27315==    by 0x114367: main ([0]main.c:46)
+==27315==  Address 0x1142db is in the Text segment of /home/maofalt/42/Poorman-Cub3D/cub3D
+==27315==    at 0x1142DB: main ([0]main.c:36)
+==27315== 
+Error
+Incorrect Map Information while parse
+==27315== 
+==27315== FILE DESCRIPTORS: 8 open (3 std) at exit.
+==27315== Open file descriptor 23:
+==27315==    <inherited from parent>
+==27315== 
+==27315== Open file descriptor 22: /dev/pts/6
+==27315==    <inherited from parent>
+==27315== 
+==27315== Open file descriptor 21: /dev/ptmx
+==27315==    <inherited from parent>
+==27315== 
+==27315== Open file descriptor 20: /home/maofalt/.vscode-server/data/logs/20230304T035113/remoteagent.log
+==27315==    <inherited from parent>
+==27315== 
+==27315== Open file descriptor 19: /home/maofalt/.vscode-server/data/logs/20230304T035113/ptyhost.log
+==27315==    <inherited from parent>
+==27315== 
+==27315== 
+==27315== HEAP SUMMARY:
+==27315==     in use at exit: 0 bytes in 0 blocks
+==27315==   total heap usage: 377 allocs, 2,148 frees, 79,617 bytes allocated
+==27315== 
+==27315== All heap blocks were freed -- no leaks are possible
+==27315== 
+==27315== Use --track-origins=yes to see where uninitialised values come from
+==27315== For lists of detected and suppressed errors, rerun with: -s
+==27315== ERROR SUMMARY: 5314 errors from 6 contexts (suppressed: 1 from 1)
