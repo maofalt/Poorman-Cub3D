@@ -35,7 +35,9 @@ int	parse_map(char	*line, char ***map, int fd)
 		ft_lstadd_back(&list, ft_lstnew(line));
 		line = get_next_line(fd);
 	}
-	*map = malloc(sizeof(char *) * (ft_lstsize(list) + 1));
+	*map = malloc(sizeof(char **) * (ft_lstsize(list) + 1));
+	if (!*map)
+		return (print_error("Error malloc"), ft_lstclear(&list, &free), 0);
 	while (list)
 	{
 		(*map)[i] = list->content;

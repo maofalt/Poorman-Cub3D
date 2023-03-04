@@ -84,6 +84,26 @@ void	finish_file_read(int *fd)
 	get_next_line(-1);
 }
 
+int	initialize_parsing_lines(char **line, int *mask, char	*path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (ft_putstr_fd("Error\nOpen() returned -1\n", 1), -1);
+	*line = get_next_line(fd);
+	*mask = 0;
+	return (fd);
+}
+
+int	read_line(char **line, int fd)
+{
+	if (*line)
+		free(*line);
+	*line = get_next_line(fd);
+	return (1);
+}
+
 int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 {
 	int		fd;
@@ -91,40 +111,29 @@ int	parsing_lines(char *path, char **textures, char **colors, char ***map)
 	char	**tmp;
 	int		mask;
 
-	fd = open(path, O_RDONLY);
+	fd = initialize_parsing_lines(&line, &mask, path);
 	if (fd == -1)
-		return (ft_putstr_fd("Error\nOpen() returned -1\n", 1), 0);
-	line = get_next_line(fd);
-	mask = 0;
+		return (0);
 	while (line)
 	{
-		if (line[0] != '\n' && line[0] != '\0')
-		{
-			tmp = ft_split(line, ' ');
-			if (!tmp)
-				return (ft_putstr_fd("Error\nInvalid text line\n", 1), 0);
-			else if (check_texture_elements(tmp, textures, &mask) || \
-			check_color_elements(colors, tmp, &mask))
-				;
-			else if (mask >= 31 && parse_map(line, map, fd))
-			{
-				free_double_char(tmp);
-				break ;
-			}
-			else
-			{
-				free_tmp_and_line(&tmp, &line);
-				finish_file_read(&fd);
-				return (ft_putstr_fd("Error\nParse error\n", 1), 0);
-			}
-		}
+		if ((line[0] == '\n' || line[0] == '\0') && read_line(&line, fd))
+			continue ;
+		tmp = ft_split(line, ' ');
+		if (!tmp)
+			return (ft_putstr_fd("Error\nInvalid text line\n", 1), 0);
+		if (check_texture_elements(tmp, textures, &mask) || \
+		check_color_elements(colors, tmp, &mask))
+			;
+		else if (mask >= 31 && parse_map(line, map, fd))
+			return (free_double_char(tmp), finish_file_read(&fd), 1);
+		else
+			return (free_tmp_and_line(&tmp, &line), finish_file_read(&fd),
+				ft_putstr_fd("Error\nParse error\n", 1), 0);
 		free_tmp_and_line(&tmp, &line);
-		line = get_next_line(fd);
+		read_line(&line, fd);
 	}
-	finish_file_read(&fd);
-	return (1);
+	return (finish_file_read(&fd), 1);
 }
-
 
 void	free_double_char(char **array)
 {
