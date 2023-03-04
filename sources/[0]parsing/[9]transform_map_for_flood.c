@@ -87,15 +87,15 @@ int	transform_map(char ***map)
 	new_map = malloc(sizeof(char *) * (height + 3));
 	if (!new_map)
 		return (0);
+	new_map[height + 2] = NULL;
 	i = 0;
 	while (i < height + 2)
 	{
 		new_map[i] = malloc(sizeof(char) * (width + 3));
 		if (!new_map[i])
-			return (0);
+			return (free_double_char(new_map), 0);
 		i++;
 	}
-	new_map[i] = NULL;
 	fill_map(&new_map, height, width);
 	copy_map(&new_map, *map, height, width);
 	free_double_char(*map);
