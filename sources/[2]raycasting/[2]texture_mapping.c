@@ -6,7 +6,7 @@
 /*   By: motero <motero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:34:39 by motero            #+#    #+#             */
-/*   Updated: 2023/03/04 00:17:44 by motero           ###   ########.fr       */
+/*   Updated: 2023/03/04 17:27:52 by motero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ int	determine_texture(t_cub *data)
 	if (dda->side == 0)
 	{
 		if (dda->ray_dir[0] > 0)
-			tex_num = 3;
+			tex_num = 0;
 		else
-			tex_num = 1;
+			tex_num = 2;
 	}
 	else
 	{
 		if (dda->ray_dir[1] > 0)
-			tex_num = 2;
+			tex_num = 3;
 		else
-			tex_num = 0;
+			tex_num = 1;
 	}
 	return (tex_num);
 }
