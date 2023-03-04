@@ -1,0 +1,33 @@
+==7368== Memcheck, a memory error detector
+==7368== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7368== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==7368== Command: ./cub3D Cub3D-Destroyer/maps/maps_buged/max_INT_colors.cub
+==7368== 
+Error
+Incorrect Map Colors
+==7368== 
+==7368== FILE DESCRIPTORS: 8 open (3 std) at exit.
+==7368== Open file descriptor 23:
+==7368==    <inherited from parent>
+==7368== 
+==7368== Open file descriptor 22: /dev/pts/6
+==7368==    <inherited from parent>
+==7368== 
+==7368== Open file descriptor 21: /dev/ptmx
+==7368==    <inherited from parent>
+==7368== 
+==7368== Open file descriptor 20: /home/maofalt/.vscode-server/data/logs/20230304T035113/remoteagent.log
+==7368==    <inherited from parent>
+==7368== 
+==7368== Open file descriptor 19: /home/maofalt/.vscode-server/data/logs/20230304T035113/ptyhost.log
+==7368==    <inherited from parent>
+==7368== 
+==7368== 
+==7368== HEAP SUMMARY:
+==7368==     in use at exit: 0 bytes in 0 blocks
+==7368==   total heap usage: 1,272 allocs, 1,272 frees, 95,718 bytes allocated
+==7368== 
+==7368== All heap blocks were freed -- no leaks are possible
+==7368== 
+==7368== For lists of detected and suppressed errors, rerun with: -s
+==7368== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

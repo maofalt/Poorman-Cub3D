@@ -1,0 +1,33 @@
+==7041== Memcheck, a memory error detector
+==7041== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7041== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==7041== Command: ./cub3D Cub3D-Destroyer/maps/maps_buged/coos_wiht_more_commas.cub
+==7041== 
+Error
+Incorrect Map Colors
+==7041== 
+==7041== FILE DESCRIPTORS: 8 open (3 std) at exit.
+==7041== Open file descriptor 23:
+==7041==    <inherited from parent>
+==7041== 
+==7041== Open file descriptor 22: /dev/pts/6
+==7041==    <inherited from parent>
+==7041== 
+==7041== Open file descriptor 21: /dev/ptmx
+==7041==    <inherited from parent>
+==7041== 
+==7041== Open file descriptor 20: /home/maofalt/.vscode-server/data/logs/20230304T035113/remoteagent.log
+==7041==    <inherited from parent>
+==7041== 
+==7041== Open file descriptor 19: /home/maofalt/.vscode-server/data/logs/20230304T035113/ptyhost.log
+==7041==    <inherited from parent>
+==7041== 
+==7041== 
+==7041== HEAP SUMMARY:
+==7041==     in use at exit: 0 bytes in 0 blocks
+==7041==   total heap usage: 1,354 allocs, 1,354 frees, 97,215 bytes allocated
+==7041== 
+==7041== All heap blocks were freed -- no leaks are possible
+==7041== 
+==7041== For lists of detected and suppressed errors, rerun with: -s
+==7041== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

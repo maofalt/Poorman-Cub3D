@@ -1,0 +1,33 @@
+==6690== Memcheck, a memory error detector
+==6690== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==6690== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==6690== Command: ./cub3D Cub3D-Destroyer/maps/maps_buged/bash_multi_player.cub
+==6690== 
+Error
+Invalid Player nbr or position
+==6690== 
+==6690== FILE DESCRIPTORS: 8 open (3 std) at exit.
+==6690== Open file descriptor 23:
+==6690==    <inherited from parent>
+==6690== 
+==6690== Open file descriptor 22: /dev/pts/6
+==6690==    <inherited from parent>
+==6690== 
+==6690== Open file descriptor 21: /dev/ptmx
+==6690==    <inherited from parent>
+==6690== 
+==6690== Open file descriptor 20: /home/maofalt/.vscode-server/data/logs/20230304T035113/remoteagent.log
+==6690==    <inherited from parent>
+==6690== 
+==6690== Open file descriptor 19: /home/maofalt/.vscode-server/data/logs/20230304T035113/ptyhost.log
+==6690==    <inherited from parent>
+==6690== 
+==6690== 
+==6690== HEAP SUMMARY:
+==6690==     in use at exit: 0 bytes in 0 blocks
+==6690==   total heap usage: 2,352 allocs, 2,352 frees, 1,171,763 bytes allocated
+==6690== 
+==6690== All heap blocks were freed -- no leaks are possible
+==6690== 
+==6690== For lists of detected and suppressed errors, rerun with: -s
+==6690== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
