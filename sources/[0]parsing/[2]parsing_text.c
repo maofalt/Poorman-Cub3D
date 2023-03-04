@@ -28,14 +28,14 @@ int	parsing_text(t_cub *data, char *path)
 	char		**colors;
 	char		**map;
 
+	map = NULL;
 	if (!init_textures_colors(&textures, &colors))
 		return (print_error("Error malloc"), 0);
 	if (!parsing_lines(path, textures, colors, &map))
 		return (free_all(textures, colors, map), \
 		print_error("Incorrect Map Information while parse"), 0);
 	if (!valide_textures(textures))
-		return (free_all(textures, colors, map), \
-		print_error("Incorrect Map Information"), 0);
+		return (free_all(textures, colors, map), print_error("Wrong Info"), 0);
 	if (!valide_colors(colors))
 		return (free_all(textures, colors, map), \
 		print_error("Incorrect Map Colors"), 0);

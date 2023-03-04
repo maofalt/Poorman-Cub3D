@@ -21,7 +21,7 @@ int	main_parsing(t_cub	*data, char *path)
 	if (!check_wall(data->map))
 		return (print_error("Invalid Map"), 0);
 	if (!get_player_pos(data->map))
-		return (print_error("Invalid Plaer nbr or position"), 0);
+		return (print_error("Invalid Player nbr or position"), 0);
 	if (!initialize_player(data))
 		return (0);
 	return (1);
