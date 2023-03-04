@@ -19,9 +19,9 @@ int	main_parsing(t_cub	*data, char *path)
 	if (!parsing_text(data, path))
 		return (0);
 	if (!check_wall(data->map))
-		return (printf("nein\n"), 0);
+		return (0);
 	if (!get_player_pos(data->map))
-		return (printf("more tha one or none nigga\n"), 0);
+		return (0);
 	if (!initialize_player(data))
 		return (0);
 	return (1);
